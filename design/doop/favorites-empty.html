@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Избранное · пусто · ПРОЧАЙ</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <doop-use
+      component="TeaShell"
+      catalog="false"
+      favorites="page"
+      favoritestarget="navigate:-VaT5PF02v"
+      cart="false"
+    >
+      <template slot="content">
+        <div class="heading"><h1>Избранное</h1></div>
+        <div class="empty">
+          <span class="empty-icon">
+            <svg
+              aria-hidden="true"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M20.6 5.7a5 5 0 0 0-7.1 0L12 7.1l-1.5-1.4a5 5 0 0 0-7.1 7.1L12 21l8.6-8.2a5 5 0 0 0 0-7.1Z"
+              />
+            </svg>
+          </span>
+          <h2>Здесь будет ваш чай</h2>
+          <p>Нажмите сердце в карточке чая.</p>
+        </div>
+        <div class="end-actions">
+          <button
+            type="button"
+            class="buy"
+            data-doop-on="click"
+            data-doop-action="navigate:xda6e8tByM"
+            data-doop-transition="dissolve"
+            data-doop-duration="160"
+          >
+            В каталог
+            <svg
+              aria-hidden="true"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="m9 5 7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+      </template>
+    </doop-use>
+  </body>
+</html>
