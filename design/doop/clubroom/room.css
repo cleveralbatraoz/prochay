@@ -1,13 +1,11 @@
 :root {
   color-scheme: light;
-  --paper: #f8edda;
-  --ink: #422f2c;
-  --clay: #ae5741;
-  --jade: #788d67;
-  --honey: #efb95e;
-  --quiet: #71594d;
-  --rule: #c9b9a1;
-  --title: Georgia, "Times New Roman", serif;
+  --paper: #f5efdf;
+  --ink: #222b24;
+  --clay: #963f2c;
+  --quiet: #625f52;
+  --rule: #c7bfaa;
+  --title: Baskerville, "Times New Roman", serif;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--ink);
   background: var(--paper);
@@ -35,6 +33,6 @@ input {
 }
 
 :focus-visible {
-  outline: 3px solid #385d49;
-  outline-offset: 2px;
+  outline: 2px solid var(--ink);
+  outline-offset: -2px;
 }

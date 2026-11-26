@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="600" height="390" viewBox="0 0 600 390" fill="none" role="img">
+  <title>Разлив крепкого чая на бумаге</title>
+  <defs>
+    <path id="spread" d="
+      M38 286c11-3 22-8 31-14 8-7 14-9 24-11 15-4 18-12 38-16
+      11-2 14-5 19-10 8-8 20-9 32-14 11-5 19-12 24-21 9-16 15-27 29-38
+      12-9 16-14 20-27 5-15 15-23 31-29 13-5 16-14 24-23 11-13 25-14 39-15
+      C362 67 370 65 375 58c6-7 5-12-2-15-10-5-25-2-30-7-7-7-1-17 9-20
+      9-3 15-2 22-6 11-6 25-2 31 4 8 6 9 15 17 19 5 3 13 6 22 3
+      13-6 25-9 39-6 9 2 15 1 22-2 6-2 11 0 15 4 4 5 6 6 12 8
+      15 4 23 15 24 28 1 12 9 17 13 27 5 16 0 27-7 40-6 11-3 24-8 36
+      -5 12-12 20-23 28-7 5-9 14-13 22-8 20-26 24-43 30
+      C458 256 446 264 432 269c-10 4-18 6-24 3-5-3-1-7 7-11 10-6 21-8 25-16
+      3-6-1-10-8-6-12 7-18 11-31 13-17 3-25 9-33 20-7 9-17 11-23 21
+      -5 11-12 15-24 17-10 1-21 0-33 4-11 4-17 10-31 15-16 6-35 8-45 16
+      -8 7-18 12-28 10-4-1-6-4-3-7 5-7 20-11 25-18 3-4 0-7-8-7
+      -19 1-34-10-57-15-16-5-22-4-33-3-10 0-15-4-22-6-8-1-15 1-21 0
+      -4-1-5-3-10-2l-21 5c-5 1-9 .5-10-1.5-.8-2.5 4.5-4 9-6l18-8
+      c4-2 4-3 1-3l-11 4c-5 2-7 1-3-1.5Z"/>
+    <linearGradient id="steeped-tea" x1="142" y1="272" x2="532" y2="60" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E5B474"/><stop offset=".19" stop-color="#D89855"/>
+      <stop offset=".38" stop-color="#DF9341"/><stop offset=".65" stop-color="#EBAD56"/>
+      <stop offset=".86" stop-color="#CE7E35"/><stop offset="1" stop-color="#AC572C"/>
+    </linearGradient>
+    <radialGradient id="honey-light" cx="0" cy="0" r="1" gradientTransform="matrix(145 -46 24 78 367 174)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F9DEAA"/><stop offset=".48" stop-color="#F5D598"/>
+      <stop offset=".79" stop-color="#EBB462" stop-opacity=".82"/><stop offset="1" stop-color="#E9A951" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="dark-liquor" cx="0" cy="0" r="1" gradientTransform="matrix(-89 61 -45 -62 518 87)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#9F4925" stop-opacity=".78"/><stop offset=".52" stop-color="#B55C2D" stop-opacity=".7"/>
+      <stop offset="1" stop-color="#BA6129" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="diluted-tea" x1="345" y1="27" x2="407" y2="73" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#DCA363" stop-opacity=".26"/><stop offset=".44" stop-color="#DC9850" stop-opacity=".34"/>
+      <stop offset="1" stop-color="#B7773A" stop-opacity=".58"/>
+    </linearGradient>
+    <linearGradient id="second-wash" x1="188" y1="251" x2="333" y2="94" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#B15B31" stop-opacity=".04"/><stop offset=".52" stop-color="#AC592E" stop-opacity=".37"/>
+      <stop offset=".83" stop-color="#C27536" stop-opacity=".42"/><stop offset="1" stop-color="#CC8339" stop-opacity=".1"/>
+    </linearGradient>
+    <linearGradient id="rim-color" x1="90" y1="273" x2="514" y2="97" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#965A33"/><stop offset=".36" stop-color="#C58C49"/>
+      <stop offset=".6" stop-color="#B77735"/><stop offset="1" stop-color="#874420"/>
+    </linearGradient>
+    <radialGradient id="sediment-density" cx="0" cy="0" r="1" gradientTransform="matrix(171 -67 41 101 369 170)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#363636"/><stop offset=".47" stop-color="#484848"/>
+      <stop offset=".77" stop-color="#929292"/><stop offset="1" stop-color="#DFDFDF"/>
+    </radialGradient>
+    <mask id="settled-at-the-edge" maskUnits="userSpaceOnUse" x="0" y="0" width="600" height="390">
+      <rect width="600" height="390" fill="url(#sediment-density)"/>
+    </mask>
+    <radialGradient id="thinning-film" cx="0" cy="0" r="1" gradientTransform="matrix(161 -66 33 77 357 179)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#969696"/><stop offset=".46" stop-color="#B4B4B4"/>
+      <stop offset=".82" stop-color="#E5E5E5"/><stop offset="1" stop-color="#fff"/>
+    </radialGradient>
+    <filter id="feathered-paper" x="-10%" y="-14%" width="120%" height="128%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".108 .15" numOctaves="3" seed="42" result="fibres"/>
+      <feDisplacementMap in="SourceGraphic" in2="fibres" scale="5" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="wet-on-wet" x="-14%" y="-18%" width="128%" height="136%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".026 .041" numOctaves="3" seed="14" result="flow"/>
+      <feDisplacementMap in="SourceGraphic" in2="flow" scale="24" xChannelSelector="R" yChannelSelector="G" result="bloom"/>
+      <feGaussianBlur in="bloom" stdDeviation=".85"/>
+    </filter>
+    <filter id="pigment-grain" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".2 .34" numOctaves="3" seed="6" result="grain"/>
+      <feColorMatrix in="grain" type="matrix" values="0 0 0 0 .44  0 0 0 0 .22  0 0 0 0 .09  2.1 0 0 0 -.89" result="granules"/>
+      <feComposite in="granules" in2="SourceGraphic" operator="in"/>
+    </filter>
+    <filter id="pooled-pigment" x="-1%" y="-2%" width="102%" height="104%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".029 .046" numOctaves="5" seed="26" result="clouds"/>
+      <feColorMatrix in="clouds" type="matrix" values="0 0 0 0 .52  0 0 0 0 .26  0 0 0 0 .13  2.4 0 0 0 -.97" result="tea"/>
+      <feComposite in="tea" in2="SourceGraphic" operator="in"/>
+    </filter>
+    <clipPath id="wet-paper"><use xlink:href="#spread"/></clipPath>
+    <mask id="exposed-paper" maskUnits="userSpaceOnUse" x="0" y="0" width="600" height="390">
+      <rect width="600" height="390" fill="url(#thinning-film)"/>
+      <g fill="#080808" filter="url(#feathered-paper)">
+        <path d="M60 296c16-5 28-9 42-10-11 3-28 7-41 11Zm47-13c12-6 24-9 38-11-7 4-20 6-29 9Z"/>
+        <path d="M153 262c7-4 13-6 19-7-5 4-12 6-18 8Zm26-10 8-3-6 4Z"/>
+        <path d="M353 72c4-3 10-4 17-4-4 2-11 4-16 5Z"/>
+      </g>
+      <g fill="#9E9E9E">
+        <path d="m128 291 11-4-5 3Zm19-12 6-3-3 3Zm7 21 7-2-2 2Zm104-152 4-7-1 5Z"/>
+      </g>
+    </mask>
+  </defs>
+  <g id="cup-contact" filter="url(#feathered-paper)">
+    <path fill="#AE6934" opacity=".2" d="M149 203c-14-9-23-24-24-41-1-19 9-40 23-53 15-15 37-23 59-21 9 1 18 3 25 8-13-5-25-7-37-5-21 1-37 11-49 24-12 14-19 30-18 47 0 17 8 29 21 40Z"/>
+    <path fill="#BB7B41" opacity=".51" d="M126 160c-1-11 3-24 9-33 5-10 10-14 13-17-2 4-7 10-11 17-7 12-9 24-10 32Zm24-53c7-7 13-10 23-14l-6 4c-5 2-9 5-14 9Zm24-14c9-5 23-7 36-5l-2 1c-11 0-19 1-30 4Zm42-3c12 1 20 5 28 13l-2-.5c-9-7-14-9-24-11Z"/>
+    <path d="M127 173c2 10 7 19 13 25m4 3 4 3" stroke="#A77143" stroke-width="1.15" opacity=".37"/>
+    <path d="M140 122c3-7 10-14 19-20m34-12 12-.5" stroke="#A86637" stroke-width=".9" opacity=".48"/>
+  </g>
+  <g id="first-shallow-splash" filter="url(#feathered-paper)">
+    <path id="earlier-pool" fill="url(#diluted-tea)" d="M325 51c-11-2-13-8-10-15 3-8 15-13 24-14 13-2 18-8 27-10 10-2 20 3 29 7 8 3 16 1 24 7 11 7 14 17 8 26-7 12-17 11-27 16-14 6-18 9-32 5-10-3-11-9-18-13-8-5-16-6-25-9Z"/>
+    <use xlink:href="#earlier-pool" fill="#fff" filter="url(#pigment-grain)" opacity=".24"/>
+    <path d="M314 40c1-9 12-15 22-17m4-.5 7-2.1m-24 30q5.5 2.4 15 4.6" stroke="#A46B38" stroke-width="1.4" opacity=".57"/>
+    <path d="M319 34c5-5 11-8 22-9 11-1 19-8 26-9" stroke="#E3B477" stroke-width="2.5" opacity=".7"/>
+  </g>
+  <g id="tea-on-paper" mask="url(#exposed-paper)" filter="url(#feathered-paper)">
+    <use xlink:href="#spread" fill="url(#steeped-tea)" opacity=".94"/>
+    <g id="washed-interior" clip-path="url(#wet-paper)">
+      <use xlink:href="#spread" fill="url(#honey-light)"/>
+      <use xlink:href="#spread" fill="url(#dark-liquor)"/>
+      <g filter="url(#wet-on-wet)">
+        <path fill="#E7AB5F" opacity=".65" d="M31 291c32-7 55-20 74-24 28-5 34-4 57-15 28-13 41-23 55-42 12-17 15-31 35-37-10 14-14 31-27 46-19 27-45 41-72 50-32 10-49 11-75 17l-52 13Z"/>
+        <path fill="url(#second-wash)" d="M123 263c33-9 56-23 74-46 21-28 17-44 35-65 17-21 24-35 48-48 13-6 26-22 33-33l43-11c-11 10-19 21-24 32-4 9-12 13-20 19-9 9-10 19-17 29-10 14-24 18-33 33-14 22-21 45-44 60-23 16-55 28-95 30Z"/>
+        <path fill="#D08A39" opacity=".43" d="M273 267c21-8 41-12 62-11 18 1 27-6 42-7 26-2 47 4 70-11 20-14 31-31 45-43 23-19 25-48 45-62 14-11 21-18 30-28l3 34-48 107-111 65-80 19-100-20c16-7 25-27 42-43Z"/>
+        <path fill="#F6CB81" opacity=".74" d="M256 237c11-19 26-24 39-39 9-11 14-25 26-30 13-6 19 0 32-7 17-8 17-22 36-28 19-7 28 1 39-3 14-5 18-13 30-18-5 9-10 16-20 23-7 5-10 14-18 21-14 12-30 8-41 17-13 9-15 21-30 25-13 4-27 0-39 9-13 11-29 18-54 30Z"/>
+        <path fill="#F5CE8D" opacity=".48" d="M315 232c13-13 32-19 54-19 13-1 21-7 33-9 13-2 24 0 35-4-9 10-25 13-37 14-15 2-28 5-41 7-17 2-31 2-44 11Z"/>
+        <path fill="#C07030" opacity=".42" d="M515 35c-6 11-18 12-23 20-4 7 0 15-5 23-8 15-23 13-30 27 14-10 29-10 39-18 14-11 10-26 23-31 11-3 32 3 35 15l2-29Z"/>
+        <path fill="#F9D99F" opacity=".55" d="M326 208c8-8 16-11 25-14 13-5 14-15 26-19 10-4 19-1 29-6 15-8 15-18 27-23 5-2 12-3 17-2-5 5-6 10-11 15-9 7-15 8-21 15-8 11-21 12-31 14-11 2-12 8-22 13-13 6-29 4-40 11Z"/>
+        <path fill="#A76539" opacity=".32" d="M402 275c1-13 16-16 25-21 10-6 11-10 11-15 7 1 11 7 7 14-10 12-27 14-43 22Z"/>
+        <path fill="#CD8D50" opacity=".45" d="M162 292c20-2 38-9 51-17 9-6 16-6 25-10-9 8-17 10-25 17-9 8-26 12-51 12Z"/>
+      </g>
+      <g mask="url(#settled-at-the-edge)">
+        <use xlink:href="#spread" fill="#fff" filter="url(#pooled-pigment)" opacity=".43"/>
+        <use xlink:href="#spread" fill="#fff" filter="url(#pigment-grain)" opacity=".45"/>
+      </g>
+    </g>
+    <g id="capillary-tide-line" clip-path="url(#wet-paper)">
+      <use xlink:href="#spread" stroke="url(#rim-color)" stroke-width="6.6" opacity=".44"/>
+      <use xlink:href="#spread" stroke="#754322" stroke-width="1.8" opacity=".64"/>
+      <g fill="#844B2A" opacity=".6">
+        <path d="M383 54c9-11 14-14 25-16 8-2 20 0 30-3-8 4-16 4-24 4-14-1-18 5-31 15Z"/>
+        <path d="M459 31c7-4 16-5 24-3 5 2 7 3 12 3-8 2-13-2-20-1-5 0-10 1-16 1Z"/>
+        <path d="M531 41c12 3 21 12 23 23 1 7 3 11 6 15-6-4-8-12-10-18-2-7-9-13-19-20Z"/>
+        <path d="M556 139c-4 14-1 24-11 39-5 7-11 11-18 17l-6 10c1-7 5-13 10-17 10-9 19-19 20-31Z"/>
+        <path d="M419 285c-16 5-23 10-33 10-8 1-12 0-19 3 9-5 17-3 26-7 8-3 15-6 26-6Z"/>
+        <path d="M129 309c16-1 30-7 41-6l10 2c-17-2-30 4-44 5Z"/>
+      </g>
+      <g fill="#F3C678" opacity=".77">
+        <path d="M230 173c7-12 17-19 23-30-2 10-13 21-19 29l-5 8Z"/>
+        <path d="M313 86c7-12 15-15 23-17-9 7-14 9-21 19Z"/>
+        <path d="M66 301c18-4 28-7 38-7-10 1-24 7-36 8Z"/>
+      </g>
+      <g fill="none" stroke="#A46332" opacity=".52">
+        <path stroke-width="1.1" d="M218 337c15-9 29-8 39-13 8-4 13-9 21-12m7-2c10-3 16-3 22-3"/>
+        <path stroke-width="1.65" d="M429 268c9-3 20-8 29-14m7-4c7-5 17-5 26-12"/>
+        <path stroke-width="1.25" d="M190 225c16-7 26-20 30-29m3-6 5-7"/>
+      </g>
+    </g>
+  </g>
+  <g id="satellite-drops" filter="url(#feathered-paper)">
+    <path fill="#C7803E" d="M543 18c-6 1-10-1-9-5 1-4 8-6 13-4 7 3 3 8-4 9Z"/>
+    <path fill="#E3AB67" d="M540 16c-4 0-6-.5-5-3 1-3 8-5 12-3 3 2-2 6-7 6Z"/>
+    <path fill="#B47649" d="M575 81c-3-2-2-6 1-6 4 0 6 4 4 6-1 1-3 1-5 0Z"/>
+    <path fill="#CF9457" d="M45 315c6-3 10-3 10-.3-1 3-7 7-12 7-4 0-4-3 2-6.7Z"/>
+    <path fill="#E7B879" d="M43 318c4-3 8-4 10-4-1 3-6 5-10 6Z"/>
+  </g>
+</svg>
