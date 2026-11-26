@@ -1,28 +1,11 @@
 {
-  "startFrame": "clubroom-catalog",
-  "nativeStartFrameId": "qqgs92FWkO",
-  "startPageId": "4U69Lim0ku",
+  "startFrame": "catalog",
+  "nativeStartFrameId": "bPMr21Qz6V",
   "frameSize": {
     "width": 390,
     "height": 844
   },
-  "navigationRedirects": {
-    "catalog": "clubroom-catalog",
-    "tea": "clubroom-tea"
-  },
   "frames": [
-    {
-      "id": "clubroom-catalog",
-      "file": "clubroom/catalog.html",
-      "name": "Чайная карта",
-      "frameId": "qqgs92FWkO"
-    },
-    {
-      "id": "clubroom-tea",
-      "file": "clubroom/tea.html",
-      "name": "Зелёные холмы Юньнани · выбор фасовки",
-      "frameId": "sHOUG-w9Fw"
-    },
     {
       "id": "catalog",
       "file": "catalog.html",
