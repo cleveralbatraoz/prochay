@@ -1,0 +1,40 @@
+:root {
+  color-scheme: light;
+  --paper: #f8edda;
+  --ink: #422f2c;
+  --clay: #ae5741;
+  --jade: #788d67;
+  --honey: #efb95e;
+  --quiet: #71594d;
+  --rule: #c9b9a1;
+  --title: Georgia, "Times New Roman", serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  height: 100dvh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid #385d49;
+  outline-offset: 2px;
+}

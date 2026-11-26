@@ -1,142 +1,181 @@
 {
-  "startFrame": "catalog",
-  "nativeStartFrameId": "xda6e8tByM",
+  "startFrame": "clubroom-catalog",
+  "nativeStartFrameId": "qqgs92FWkO",
+  "startPageId": "4U69Lim0ku",
   "frameSize": {
     "width": 390,
     "height": 844
   },
+  "navigationRedirects": {
+    "catalog": "clubroom-catalog",
+    "tea": "clubroom-tea"
+  },
   "frames": [
+    {
+      "id": "clubroom-catalog",
+      "file": "clubroom/catalog.html",
+      "name": "Чайная на Морозова",
+      "frameId": "qqgs92FWkO"
+    },
+    {
+      "id": "clubroom-tea",
+      "file": "clubroom/tea.html",
+      "name": "Зелёные холмы Юньнани · выбор фасовки",
+      "frameId": "sHOUG-w9Fw"
+    },
     {
       "id": "catalog",
       "file": "catalog.html",
       "name": "Каталог чая",
-      "frameId": "xda6e8tByM"
+      "frameId": "bPMr21Qz6V",
+      "sourceFrameId": "xda6e8tByM"
     },
     {
       "id": "tea",
       "file": "tea.html",
       "name": "Зелёные холмы Юньнани",
-      "frameId": "7oQIjNpLcM"
+      "frameId": "Ia8_ruBc3Y",
+      "sourceFrameId": "7oQIjNpLcM"
     },
     {
       "id": "jasmine",
       "file": "jasmine.html",
       "name": "Моли Хуа Люй Ча",
-      "frameId": "SQ8P4EQM4V"
+      "frameId": "LBY3noinPA",
+      "sourceFrameId": "SQ8P4EQM4V"
     },
     {
       "id": "hibiscus",
       "file": "hibiscus.html",
       "name": "Каркаде",
-      "frameId": "MaJRE52Vmf"
+      "frameId": "_lr7g-gDEU",
+      "sourceFrameId": "MaJRE52Vmf"
     },
     {
       "id": "tea-brick",
       "file": "tea-brick.html",
       "name": "Зелёные холмы Юньнани · 500 г",
-      "frameId": "BMAsptnJy2"
+      "frameId": "MDnZOJoJCj",
+      "sourceFrameId": "BMAsptnJy2"
     },
     {
       "id": "favorites",
       "file": "favorites.html",
       "name": "Избранное",
-      "frameId": "97Y1vmNzmk"
+      "frameId": "ntIYDqRf0Y",
+      "sourceFrameId": "97Y1vmNzmk"
     },
     {
       "id": "cart",
       "file": "cart.html",
       "name": "Корзина · Зелёные холмы Юньнани · 100 г × 1",
-      "frameId": "k47DSO2OSK"
+      "frameId": "UUYlsVlAcG",
+      "sourceFrameId": "k47DSO2OSK"
     },
     {
       "id": "cart-two",
       "file": "cart-two.html",
       "name": "Корзина · Зелёные холмы Юньнани · 100 г × 2",
-      "frameId": "DBlqVobKNs"
+      "frameId": "kJVGKbtjUm",
+      "sourceFrameId": "DBlqVobKNs"
     },
     {
       "id": "cart-brick",
       "file": "cart-brick.html",
       "name": "Корзина · Зелёные холмы Юньнани · 500 г × 1",
-      "frameId": "5NVeBUXQAB"
+      "frameId": "d_oIuYGYXI",
+      "sourceFrameId": "5NVeBUXQAB"
     },
     {
       "id": "cart-brick-two",
       "file": "cart-brick-two.html",
       "name": "Корзина · Зелёные холмы Юньнани · 500 г × 2",
-      "frameId": "rwtQiciXGK"
+      "frameId": "6KJ_TT-OeN",
+      "sourceFrameId": "rwtQiciXGK"
     },
     {
       "id": "cart-jasmine",
       "file": "cart-jasmine.html",
       "name": "Корзина · Моли Хуа Люй Ча · 100 г × 1",
-      "frameId": "_s6tA82v2a"
+      "frameId": "LTSE0BGk6w",
+      "sourceFrameId": "_s6tA82v2a"
     },
     {
       "id": "cart-jasmine-two",
       "file": "cart-jasmine-two.html",
       "name": "Корзина · Моли Хуа Люй Ча · 100 г × 2",
-      "frameId": "zt3llm3ScI"
+      "frameId": "cIGVlbOitu",
+      "sourceFrameId": "zt3llm3ScI"
     },
     {
       "id": "cart-hibiscus",
       "file": "cart-hibiscus.html",
       "name": "Корзина · Каркаде · 100 г × 1",
-      "frameId": "RogTVxDdWr"
+      "frameId": "EGHQUAyC8J",
+      "sourceFrameId": "RogTVxDdWr"
     },
     {
       "id": "cart-hibiscus-two",
       "file": "cart-hibiscus-two.html",
       "name": "Корзина · Каркаде · 100 г × 2",
-      "frameId": "YyHt42xQb5"
+      "frameId": "mERbsLzUgn",
+      "sourceFrameId": "YyHt42xQb5"
     },
     {
       "id": "cart-empty",
       "file": "cart-empty.html",
       "name": "Корзина · пусто",
-      "frameId": "esi-TEAwfW"
+      "frameId": "bWeYEJlonC",
+      "sourceFrameId": "esi-TEAwfW"
     },
     {
       "id": "favorites-jasmine",
       "file": "favorites-jasmine.html",
       "name": "Избранное · Моли Хуа Люй Ча",
-      "frameId": "Bz1Dy60REM"
+      "frameId": "YhVGbdGjRh",
+      "sourceFrameId": "Bz1Dy60REM"
     },
     {
       "id": "favorites-hibiscus",
       "file": "favorites-hibiscus.html",
       "name": "Избранное · Каркаде",
-      "frameId": "Sx_3EC6bPv"
+      "frameId": "3n1lD-tIo7",
+      "sourceFrameId": "Sx_3EC6bPv"
     },
     {
       "id": "favorites-empty",
       "file": "favorites-empty.html",
       "name": "Избранное · пусто",
-      "frameId": "-VaT5PF02v"
+      "frameId": "e5XFpHmh-L",
+      "sourceFrameId": "-VaT5PF02v"
     },
     {
       "id": "cart-mixed-bricks",
       "file": "cart-mixed-bricks.html",
       "name": "Корзина · 100 г × 1 + 500 г × 2",
-      "frameId": "IJfV3qtJE0"
+      "frameId": "R06f2x5k4c",
+      "sourceFrameId": "IJfV3qtJE0"
     },
     {
       "id": "cart-mixed-full",
       "file": "cart-mixed-full.html",
       "name": "Корзина · 100 г × 2 + 500 г × 2",
-      "frameId": "CEscH57ySO"
+      "frameId": "UTuhg-u2ks",
+      "sourceFrameId": "CEscH57ySO"
     },
     {
       "id": "cart-mixed-two",
       "file": "cart-mixed-two.html",
       "name": "Корзина · 100 г × 2 + 500 г × 1",
-      "frameId": "XNfXCEBqlM"
+      "frameId": "GT-Bfh8Oid",
+      "sourceFrameId": "XNfXCEBqlM"
     },
     {
       "id": "cart-mixed",
       "file": "cart-mixed.html",
       "name": "Корзина · 100 г × 1 + 500 г × 1",
-      "frameId": "wDEylBwslR"
+      "frameId": "tN9Ol8ufuB",
+      "sourceFrameId": "wDEylBwslR"
     }
   ]
 }
