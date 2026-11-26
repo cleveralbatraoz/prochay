@@ -1,0 +1,36 @@
+# Локальное окружение и секреты.
+.DS_Store
+node_modules/
+.local/
+.env
+.env.*
+!.env.example
+secrets/
+*.pem
+*.key
+*.p12
+*.pfx
+cookies*.json
+cookies*.txt
+*-cookies.json
+*-cookies.txt
+credentials.json
+storageState*.json
+storage-state*.json
+
+# Общая привязка к холсту Doop хранится в репозитории.
+# Остальное в .doop/ создаёт локальный CLI.
+**/.doop/*
+!**/.doop/config.json
+
+# Изолированная сессия Playwright, кэш и результаты прогонов.
+.auth/
+**/playwright/.cache/
+.playwright/
+.playwright-cli/
+.playwright-mcp/
+test-results/
+playwright-report/
+blob-report/
+artifacts/
+*.har
