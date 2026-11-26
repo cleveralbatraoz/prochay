@@ -1,0 +1,46 @@
+html[data-doop-theme] .tea-shell .brand {
+  filter: none;
+}
+
+html[data-doop-theme] .tea-shell .hero-photo {
+  background: var(--color-cover);
+}
+
+html[data-doop-theme] .tea-shell .hero-type {
+  color: var(--color-on-cover);
+}
+
+html[data-doop-theme] .tea-shell .round-arrow,
+html[data-doop-theme] .tea-shell .buy {
+  background: var(--color-action);
+  color: var(--color-on-action);
+}
+
+html[data-doop-theme] .tea-shell .card-photo,
+html[data-doop-theme] .tea-shell .detail-photo {
+  background: var(--color-paper);
+}
+
+html[data-doop-theme] .tea-shell .card-photo img {
+  mix-blend-mode: multiply;
+}
+
+html[data-doop-theme] .tea-shell .pack {
+  border-color: var(--color-control-edge);
+}
+
+html[data-doop-theme] .tea-shell .pack[data-selected="true"] {
+  background: var(--color-selected);
+  border-color: var(--color-mark);
+}
+
+html[data-doop-theme] .tea-shell .pack[data-selected="true"]::after {
+  background: var(--color-mark);
+  border-color: var(--color-mark);
+}
+
+html[data-doop-theme] .tea-shell .tab[aria-current="page"] .tab-icon,
+html[data-doop-theme] .tea-shell .empty-icon,
+html[data-doop-theme] .tea-shell .stepper {
+  background: var(--color-soft-surface);
+}
