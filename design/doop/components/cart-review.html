@@ -1,0 +1,42 @@
+<section class="cart-content">
+  <div class="heading"><h1>Корзина</h1></div>
+  <div class="cart-row">
+    <img data-doop-prop="src:photo" alt="" />
+    <div>
+      <h2 data-doop-prop="product"></h2>
+      <p data-doop-prop="variant"></p>
+      <div data-doop-slot="quantity"></div>
+    </div>
+    <strong class="price" data-doop-prop="amount"></strong>
+  </div>
+  <div data-doop-slot="extra"></div>
+  <div class="end-actions">
+    <div class="summary">
+      <span>Итого</span>
+      <strong data-doop-prop="total"></strong>
+    </div>
+    <button
+      type="button"
+      class="buy"
+      data-doop-on="click"
+      data-doop-action="navigate:xda6e8tByM"
+      data-doop-transition="dissolve"
+      data-doop-duration="160"
+    >
+      Вернуться в каталог
+      <svg
+        aria-hidden="true"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.7"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="m9 5 7 7-7 7" />
+      </svg>
+    </button>
+  </div>
+</section>

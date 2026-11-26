@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Корзина · 100 г × 2 · ПРОЧАЙ</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <doop-use
+      component="TeaShell"
+      catalog="false"
+      favorites="false"
+      cart="page"
+      carttarget="navigate:DBlqVobKNs"
+    >
+      <template slot="content">
+        <doop-use
+          component="CartReview"
+          photo="https://www.prochay.ru/upload/iblock/9a3/jlx46c6f600jnjg7schnfip202yb9ith/IMG_2605.jpg"
+          product="Зелёные холмы Юньнани"
+          variant="Шу пуэр · 100 г"
+          amount="1 700 ₽"
+          total="1 700 ₽"
+        >
+          <template slot="quantity">
+            <div class="stepper" role="group" aria-label="Количество упаковок по 100 г">
+              <button
+                type="button"
+                class="step"
+                aria-label="Уменьшить количество упаковок по 100 г"
+                data-doop-on="click"
+                data-doop-action="navigate:k47DSO2OSK"
+                data-doop-transition="instant"
+              >
+                <span aria-hidden="true">−</span>
+              </button>
+              <span>2</span>
+              <button type="button" class="step limit" disabled aria-label="Максимум две упаковки по 100 г">
+                <span aria-hidden="true">+</span>
+              </button>
+            </div>
+          </template>
+          <template slot="extra">
+            <button
+              type="button"
+              class="add-pack"
+              data-doop-on="click"
+              data-doop-action="navigate:XNfXCEBqlM"
+              data-doop-transition="instant"
+            >
+              <span aria-hidden="true">+</span>
+              <span>Добавить 500 г</span>
+              <span class="price">4 250 ₽</span>
+            </button>
+          </template>
+        </doop-use>
+      </template>
+    </doop-use>
+  </body>
+</html>

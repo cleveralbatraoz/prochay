@@ -1,0 +1,657 @@
+.tea-shell {
+  --gutter: clamp(16px, 5.1%, 24px);
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+}
+
+.tea-shell * {
+  box-sizing: border-box;
+}
+
+.tea-shell .shelf {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  flex-direction: column;
+}
+
+.tea-shell .topbar {
+  display: flex;
+  height: 64px;
+  flex: 0 0 64px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 var(--gutter);
+}
+
+.tea-shell .brand {
+  display: block;
+  width: 130px;
+  height: 25px;
+  filter: brightness(0) saturate(100%) invert(20%) sepia(16%) saturate(1110%) hue-rotate(95deg);
+  object-fit: contain;
+  object-position: left center;
+}
+
+.tea-shell .brand img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.tea-shell .topbar a,
+.tea-shell .topbar button {
+  display: inline-flex;
+  min-height: 44px;
+  min-width: 44px;
+  align-items: center;
+}
+
+.tea-shell .club {
+  color: var(--color-muted);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.tea-shell .page {
+  display: flex;
+  min-height: 0;
+  flex: 1 1 auto;
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  padding: 4px var(--gutter) 24px;
+  scrollbar-width: none;
+}
+
+.tea-shell .page::-webkit-scrollbar {
+  display: none;
+}
+
+.tea-shell .page > * {
+  flex-shrink: 0;
+}
+
+.tea-shell h1,
+.tea-shell h2,
+.tea-shell h3,
+.tea-shell p {
+  margin: 0;
+}
+
+.tea-shell button,
+.tea-shell a {
+  color: inherit;
+  font: inherit;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.tea-shell button {
+  border: 0;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+  text-align: inherit;
+}
+
+.tea-shell a:focus-visible,
+.tea-shell button:focus-visible {
+  outline: 2px solid var(--color-green);
+  outline-offset: 2px;
+}
+
+.tea-shell .heading {
+  margin-bottom: 17px;
+}
+
+.tea-shell .heading h1,
+.tea-shell .page > h1 {
+  font: 400 40px/1.03 var(--font-serif);
+  letter-spacing: -.045em;
+  overflow-wrap: break-word;
+}
+
+.tea-shell .sub,
+.tea-shell .meta,
+.tea-shell .hero-type {
+  color: var(--color-muted);
+  font: 650 10px/1.4 var(--font-sans);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.tea-shell .heading .sub {
+  margin-top: 8px;
+}
+
+.tea-shell .hero-link {
+  display: block;
+  width: 100%;
+  color: var(--color-ink);
+  text-align: left;
+}
+
+.tea-shell .hero-photo {
+  position: relative;
+  display: grid;
+  height: clamp(178px, 53vw, 222px);
+  overflow: hidden;
+  place-items: center;
+  border-radius: 8px;
+  background: linear-gradient(120deg, #eff0d2, var(--color-celadon));
+}
+
+.tea-shell .hero-pack {
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  width: 71%;
+  height: auto;
+  clip-path: polygon(1.8% 24.5%, 98.2% 22.4%, 97.8% 73.6%, 2.2% 74%);
+  transform: translate(-50%, -50%) rotate(-5deg);
+}
+
+.tea-shell .hero-type {
+  position: absolute;
+  z-index: 1;
+  top: 12px;
+  left: 13px;
+  padding: 0;
+  color: var(--color-ink);
+}
+
+.tea-shell .round-arrow {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--color-paper);
+  color: var(--color-green);
+  font-size: 21px;
+}
+
+.tea-shell .round-arrow img {
+  width: 18px;
+  height: 18px;
+}
+
+.tea-shell .hero-caption {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 6px 10px;
+  padding: 13px 0 0;
+}
+
+.tea-shell .hero-caption .hero-name {
+  grid-column: 1 / -1;
+  font: 400 29px/1.07 var(--font-serif);
+  letter-spacing: -.04em;
+}
+
+.tea-shell .price {
+  color: var(--color-ink);
+  font: 700 15px/1.3 var(--font-sans);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.tea-shell .hero-caption .price {
+  grid-column: 2;
+  justify-self: end;
+}
+
+.tea-shell .section-head {
+  margin: 21px 0 12px;
+  border-top: 1px solid var(--color-line);
+  padding-top: 15px;
+}
+
+.tea-shell .section-head h2 {
+  font: 400 25px/1.12 var(--font-serif);
+  letter-spacing: -.035em;
+}
+
+.tea-shell .grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 12px;
+}
+
+.tea-shell .tea-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 5px;
+  text-align: left;
+}
+
+.tea-shell .tea-card > a {
+  display: flex;
+  min-height: 44px;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.tea-shell .card-photo,
+.tea-shell .detail-photo {
+  overflow: hidden;
+  border-radius: 7px;
+  background: #efece0;
+}
+
+.tea-shell .card-photo {
+  aspect-ratio: 1.30;
+  margin-bottom: 3px;
+}
+
+.tea-shell .card-photo img,
+.tea-shell .detail-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tea-shell .tea-card .meta {
+  font-size: 9px;
+}
+
+.tea-shell .tea-card .product-name {
+  font: 400 20px/1.1 var(--font-serif);
+  letter-spacing: -.03em;
+  overflow-wrap: break-word;
+}
+
+.tea-shell .tea-card .price {
+  margin-top: auto;
+  padding-top: 3px;
+}
+
+.tea-shell .detail-photo {
+  aspect-ratio: 2.04;
+  margin: 0 0 15px;
+}
+
+.tea-shell .page > .meta {
+  margin-bottom: 7px;
+}
+
+.tea-shell .taste {
+  margin: 9px 0 16px;
+  color: var(--color-ink);
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.tea-shell .pack-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.tea-shell .pack {
+  position: relative;
+  display: flex;
+  min-height: 76px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 3px;
+  padding: 10px 12px;
+  border: 1px solid var(--color-line);
+  border-radius: 10px;
+  background: var(--color-paper);
+  text-align: left;
+}
+
+.tea-shell .pack[data-selected="true"] {
+  border-color: var(--color-green);
+  background: #e7ebc5;
+}
+
+.tea-shell .pack strong {
+  font-size: 17px;
+  line-height: 1.2;
+}
+
+.tea-shell .pack small {
+  color: var(--color-muted);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.tea-shell .pack .price {
+  margin-top: 3px;
+}
+
+.tea-shell .buy {
+  display: flex;
+  width: 100%;
+  min-height: 52px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-radius: 12px;
+  padding: 12px 16px;
+  background: var(--color-green);
+  color: #fffef8;
+  font: 650 16px/1.3 var(--font-sans);
+}
+
+.tea-shell .buy .price {
+  color: inherit;
+}
+
+.tea-shell .saved-row,
+.tea-shell .cart-row {
+  display: grid;
+  grid-template-columns: clamp(66px, 21%, 84px) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 6px 10px;
+  border-top: 1px solid var(--color-line);
+  padding: 15px 0;
+}
+
+.tea-shell .saved-row > img,
+.tea-shell .cart-row > img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1.12;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.tea-shell .saved-row h2,
+.tea-shell .cart-row h2 {
+  font: 600 16px/1.2 var(--font-sans);
+  letter-spacing: -.025em;
+  overflow-wrap: break-word;
+}
+
+.tea-shell .saved-row p,
+.tea-shell .cart-row p {
+  margin-top: 4px;
+  color: var(--color-muted);
+  font-size: 13px;
+}
+
+.tea-shell .quantity {
+  display: inline-block;
+  margin-top: 6px;
+  color: var(--color-muted);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.tea-shell .summary {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  border-top: 1px solid var(--color-line);
+  padding: 13px 0;
+  font: 400 24px/1.2 var(--font-serif);
+}
+
+.tea-shell .summary strong,
+.tea-shell .summary .price {
+  font: 700 22px/1.2 var(--font-sans);
+  font-variant-numeric: tabular-nums;
+}
+
+.tea-shell .back {
+  display: inline-flex;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  align-self: flex-start;
+  gap: 6px;
+  color: var(--color-green);
+  font-size: 15px;
+  font-weight: 550;
+}
+
+.tea-shell .end-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+.tea-shell .bottom-nav {
+  display: grid;
+  flex: 0 0 auto;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: center;
+  gap: 3px;
+  border-top: 1px solid var(--color-line);
+  padding: 4px var(--gutter);
+  background: var(--color-paper);
+}
+
+.tea-shell .tab {
+  display: flex;
+  min-width: 44px;
+  min-height: 59px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  color: var(--color-muted);
+  font: 500 11px/1.1 var(--font-sans);
+  text-align: center;
+}
+
+.tea-shell .tab .tab-icon {
+  display: grid;
+  place-items: center;
+  box-sizing: content-box;
+  width: 18px;
+  height: 18px;
+  padding: 4px 14px;
+  border-radius: 16px;
+  object-fit: contain;
+}
+
+.tea-shell .tab[aria-current="page"] {
+  color: var(--color-green);
+  font-weight: 700;
+}
+
+.tea-shell .tab[aria-current="page"] .tab-icon {
+  background: var(--color-celadon);
+}
+
+.tea-shell .safe-area {
+  height: max(5px, env(safe-area-inset-bottom, 0px));
+  flex: 0 0 auto;
+  background: var(--color-paper);
+}
+
+.tea-shell .hero-name,
+.tea-shell .product-name {
+  display: block;
+}
+
+.tea-shell .hero-type {
+  max-width: 88%;
+}
+
+.tea-shell .tea-card .price small {
+  color: var(--color-muted);
+  font-size: 11px;
+  font-weight: 450;
+}
+
+.tea-shell .detail-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.tea-shell .leaf-motion {
+  display: grid;
+  color: var(--color-green);
+  place-items: center;
+  animation: prochay-unfurl 180ms ease-out;
+}
+
+@keyframes prochay-unfurl {
+  from { opacity: .35; transform: translateY(3px) rotate(-18deg); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tea-shell .leaf-motion { animation: none; }
+}
+
+.tea-shell .field-title {
+  margin-bottom: 7px;
+  font: 600 14px/1.4 var(--font-sans);
+}
+
+.tea-shell .row-name {
+  display: block;
+  font: 600 16px/1.2 var(--font-sans);
+}
+
+.tea-shell .row-meta {
+  display: block;
+  margin: 3px 0;
+  color: var(--color-muted);
+  font-size: 13px;
+}
+
+.tea-shell .stepper {
+  display: inline-grid;
+  grid-template-columns: 44px 18px 44px;
+  align-items: center;
+  margin-top: 5px;
+  border-radius: 22px;
+  background: #edece2;
+  font: 600 14px/1 var(--font-sans);
+  text-align: center;
+}
+
+.tea-shell .step,
+.tea-shell .save-button {
+  display: inline-grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border-radius: 50%;
+}
+
+.tea-shell .step { font: 400 19px/1 var(--font-sans); }
+.tea-shell .limit { color: #8d9387; }
+
+.tea-shell .empty {
+  margin: auto 0;
+  text-align: center;
+}
+
+.tea-shell .empty-icon {
+  display: inline-grid;
+  width: 66px;
+  height: 66px;
+  margin-bottom: 14px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--color-celadon);
+}
+
+.tea-shell .empty h2 {
+  font: 400 29px/1.1 var(--font-serif);
+}
+
+.tea-shell .empty p { margin-top: 7px; color: var(--color-muted); }
+
+.tea-shell .detail-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tea-shell .saved-entry {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border-top: 1px solid var(--color-line);
+}
+
+.tea-shell .saved-entry .saved-row {
+  flex: 1;
+  min-width: 0;
+  grid-template-columns: 70px 1fr;
+  border: 0;
+}
+
+.tea-shell .empty + .end-actions { margin-top: 0; }
+
+.tea-shell .saved-feature {
+  position: relative;
+}
+
+.tea-shell .saved-feature > .save-button {
+  position: absolute;
+  z-index: 1;
+  top: 10px;
+  right: 10px;
+  background: var(--color-paper);
+}
+
+.tea-shell .saved-title {
+  margin: 8px 0 12px;
+  font: 400 35px/1.06 var(--font-serif);
+  letter-spacing: -.04em;
+}
+
+.tea-shell .saved-caption { padding-top: 16px; }
+.tea-shell .saved-caption .row-meta { font-size: 15px; }
+.tea-shell .saved-caption .price { margin-top: 14px; display: block; }
+
+.tea-shell .saved-photo {
+  display: block;
+  height: 206px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.tea-shell .tea-card:last-child .card-photo img {
+  object-fit: contain;
+  background: white;
+}
+
+.tea-shell .pack[data-selected="true"]::after {
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  width: 8px;
+  height: 8px;
+  border: 2px solid var(--color-green);
+  border-radius: 50%;
+  content: "";
+}

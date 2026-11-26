@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Корзина · 500 г × 2 · ПРОЧАЙ</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <doop-use
+      component="TeaShell"
+      catalog="false"
+      favorites="false"
+      cart="page"
+      carttarget="navigate:rwtQiciXGK"
+    >
+      <template slot="content">
+        <doop-use
+          component="CartReview"
+          photo="https://www.prochay.ru/upload/iblock/b5a/r59sa0cvhwu5p3qbf1m81ahn0e4cwc0n/shu-puer-zelyenye-kholmy-yunnani-500gr-2024-prochay-ru.jpg"
+          product="Зелёные холмы Юньнани"
+          variant="Шу пуэр · 500 г"
+          amount="8 500 ₽"
+          total="8 500 ₽"
+        >
+          <template slot="quantity">
+            <div class="stepper" role="group" aria-label="Количество упаковок по 500 г">
+              <button
+                type="button"
+                class="step"
+                aria-label="Уменьшить количество упаковок по 500 г"
+                data-doop-on="click"
+                data-doop-action="navigate:5NVeBUXQAB"
+                data-doop-transition="instant"
+              >
+                <span aria-hidden="true">−</span>
+              </button>
+              <span>2</span>
+              <button type="button" class="step limit" disabled aria-label="Максимум две упаковки по 500 г">
+                <span aria-hidden="true">+</span>
+              </button>
+            </div>
+          </template>
+          <template slot="extra">
+            <button
+              type="button"
+              class="add-pack"
+              data-doop-on="click"
+              data-doop-action="navigate:IJfV3qtJE0"
+              data-doop-transition="instant"
+            >
+              <span aria-hidden="true">+</span>
+              <span>Добавить 100 г</span>
+              <span class="price">850 ₽</span>
+            </button>
+          </template>
+        </doop-use>
+      </template>
+    </doop-use>
+  </body>
+</html>

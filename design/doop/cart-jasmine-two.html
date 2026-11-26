@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Корзина · Моли Хуа Люй Ча · 100 г × 2 · ПРОЧАЙ</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <doop-use
+      component="TeaShell"
+      catalog="false"
+      favorites="false"
+      cart="page"
+      carttarget="navigate:zt3llm3ScI"
+    >
+      <template slot="content">
+        <doop-use
+          component="CartReview"
+          photo="https://www.prochay.ru/upload/iblock/ada/q6nxxptq4h7dq226e6zesouv6u0guvdm/IMG_2766.jpg"
+          product="Моли Хуа Люй Ча"
+          variant="Зелёный чай · 100 г"
+          amount="2 200 ₽"
+          total="2 200 ₽"
+        >
+          <template slot="quantity">
+            <div class="stepper">
+              <button
+                type="button"
+                class="step"
+                data-doop-on="click"
+                data-doop-action="navigate:_s6tA82v2a"
+                data-doop-transition="instant"
+                data-doop-duration="160"
+                aria-label="Уменьшить количество"
+              >
+                <span aria-hidden="true">−</span>
+              </button>
+              <span>2</span>
+              <span class="step limit" aria-label="Две упаковки">
+                <span aria-hidden="true">+</span>
+              </span>
+            </div>
+          </template>
+        </doop-use>
+      </template>
+    </doop-use>
+  </body>
+</html>

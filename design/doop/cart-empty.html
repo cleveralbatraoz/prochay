@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Корзина · пусто · ПРОЧАЙ</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <doop-use
+      component="TeaShell"
+      catalog="false"
+      favorites="false"
+      cart="page"
+      carttarget="navigate:esi-TEAwfW"
+    >
+      <template slot="content">
+        <div class="heading"><h1>Корзина</h1></div>
+        <div class="empty">
+          <span class="empty-icon">
+            <svg
+              aria-hidden="true"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M5 7h14l1 14H4L5 7Z" />
+              <path d="M9 9V6a3 3 0 0 1 6 0v3" />
+            </svg>
+          </span>
+          <h2>Пока пусто</h2>
+          <p>Выберите чай в каталоге.</p>
+        </div>
+        <div class="end-actions">
+          <button
+            type="button"
+            class="buy"
+            data-doop-on="click"
+            data-doop-action="navigate:xda6e8tByM"
+            data-doop-transition="dissolve"
+            data-doop-duration="160"
+          >
+            В каталог
+            <svg
+              aria-hidden="true"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.7"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="m9 5 7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+      </template>
+    </doop-use>
+  </body>
+</html>
