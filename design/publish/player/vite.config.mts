@@ -8,7 +8,23 @@ const staticView = fileURLToPath(new URL('./static-view.ts', import.meta.url))
 
 export default defineConfig({
   base: './',
-  plugins: [react(), tailwindcss(), frameRuntime()],
+  plugins: [
+    {
+      name: 'disable-doop-hotspot-hints',
+      enforce: 'pre',
+      transform: {
+        filter: { id: /\/doop\/src\/components\/PrototypePlayer\.tsx$/ },
+        handler(source) {
+          const message = "{ type: 'doop:proto', on: interactive, reqId }"
+          if (!source.includes(message)) this.error('Doop prototype activation message has changed')
+          return source.replace(message, "{ type: 'doop:proto', on: interactive, hints: false, reqId }")
+        },
+      },
+    },
+    react(),
+    tailwindcss(),
+    frameRuntime(),
+  ],
   resolve: {
     alias: {
       './PrototypeComments': staticView,
