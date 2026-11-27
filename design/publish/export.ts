@@ -125,7 +125,7 @@ function copyPlayer(output: string, player: string, base: string) {
   copyFileSync(join(dist, 'licenses.txt'), join(source, 'third-party.txt'))
   execFileSync('tar', [
     '--no-xattrs', '-czf', join(source, 'player-source.tar.gz'), '-C', player,
-    'entry.ts', 'shop-state.ts', 'catalog-search.ts', 'frame-aliases.json',
+    'entry.ts', 'shop-state.ts', 'catalog-search.ts',
     'index.html', 'styles.css', 'vite.config.mts', 'package.json', 'package-lock.json', '.npmrc',
     '-C', modules, 'doop/LICENSE', 'doop/shared', 'doop/package.json',
   ], { env: { ...process.env, COPYFILE_DISABLE: '1' } })

@@ -1,6 +1,5 @@
 import { composeFrameHtml, type FrameResources } from 'doop/shared/frameCompose.ts'
 import { filterCatalog } from './catalog-search'
-import frameAliases from './frame-aliases.json'
 import { createShopSession, type Product } from './shop-state'
 import './styles.css'
 
@@ -26,7 +25,6 @@ function isCatalog(key: string) {
 function startShop(canvas: Canvas) {
   const byId = new Map(canvas.frames.map(frame => [frame.id, frame]))
   const byKey = new Map(canvas.frames.map(frame => [frame.key, frame]))
-  const oldLinks = new Map(Object.entries(frameAliases))
   const names = new Map(canvas.products.map(product => [product.id, product.name]))
   const documents = new Map<string, Document>()
   function contentFor(key: string) {
@@ -63,7 +61,7 @@ function startShop(canvas: Canvas) {
   let page: HTMLElement
   function viewFromUrl(): View {
     const requested = new URLSearchParams(location.search).get('frame') ?? ''
-    const frame = byId.get(requested) ?? byKey.get(oldLinks.get(requested) ?? requested) ?? initial
+    const frame = byKey.get(requested) ?? initial
     return { key: frame.key, query: '', top: 0 }
   }
   function remember() {
