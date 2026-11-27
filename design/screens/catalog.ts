@@ -91,12 +91,11 @@ function packaging(product: Product, selected: Variant) {
     if (option instanceof HTMLButtonElement) {
       option.type = 'button'
       option.setAttribute('aria-pressed', String(isSelected))
+      if (isSelected) option.tabIndex = -1
     }
     option.className = 'pack'
     if (isSelected) {
-      option.tabIndex = -1
       option.dataset.selected = 'true'
-      option.setAttribute('aria-label', [sizeLabel, choice.packLabel, 'выбрано'].filter(Boolean).join(', '))
     } else {
       option.dataset.variant = choice.id
     }
