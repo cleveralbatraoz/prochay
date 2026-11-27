@@ -121,7 +121,6 @@ export function renderProduct(page: HTMLElement, product: Product, variant: Vari
   } else {
     photo.classList.add('object-photo')
     title.classList.add('object-title')
-    element(screen, '.tea-leaf').remove()
   }
   element(screen, '.meta').textContent = [product.category, product.origin, product.region].filter(Boolean).join(' · ')
   element(screen, '.taste').textContent = product.description
