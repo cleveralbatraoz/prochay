@@ -19,7 +19,7 @@ type Tab = 'catalog' | 'favorites' | 'cart'
 
 const directory = import.meta.dirname
 const groups = { all: 'Все', tea: 'Чай', ware: 'Посуда', accessories: 'Аксессуары' }
-const originalCards = new Set(['tea', 'jasmine', 'hibiscus'])
+const productsWithCustomCards = new Set(['tea', 'jasmine', 'hibiscus'])
 const plural = new Intl.PluralRules('ru')
 const number = new Intl.NumberFormat('en-US', { maximumFractionDigits: 20 })
 const catalogTemplate = readFileSync(join(directory, '../catalog.html'), 'utf8')
@@ -50,7 +50,7 @@ function productFields(product: Product): Fields {
   for (const [key, value] of Object.entries(product)) {
     if (typeof value === 'string') fields[key] = escapeHtml(value)
   }
-  fields.detail = originalCards.has(product.id) ? product.id : 'item-' + product.id
+  fields.detail = productsWithCustomCards.has(product.id) ? product.id : 'item-' + product.id
   fields.amount = rubles(product.price)
   return fields
 }
@@ -122,7 +122,7 @@ function render(output: string) {
 
   for (const product of products) {
     const { id, name } = product
-    if (originalCards.has(id)) continue
+    if (productsWithCustomCards.has(id)) continue
     const fields = productFields(product)
     const detail = substitute(templates.item, { ...fields, unit_label: unitLabel(product), heart: heart('none') })
     screen('item-' + id, name, detail, 'catalog')
