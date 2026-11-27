@@ -33,7 +33,7 @@ async function download(url: URL, headers?: Record<string, string>) {
   return response
 }
 
-async function exportCanvas(output: string, cookie: string) {
+async function exportCanvas(output: string, cookie: string, canvasId: string, base: string) {
   const config: { canvas: string; server: string } = JSON.parse(readFileSync(join(design, '.doop/config.json'), 'utf8'))
   const url = new URL(config.server)
   if (!['http:', 'https:'].includes(url.protocol) || !['localhost', '127.0.0.1', '[::1]'].includes(url.hostname)) {
@@ -57,7 +57,7 @@ async function exportCanvas(output: string, cookie: string) {
     if (/(?:https?:)?\/\/(?!www\.w3\.org\/)/.test(relative)) throw new Error('Unbundled external URL in design')
     return relative.replace(asset, (_, filename: string) => {
       media.add(filename)
-      return '/media/' + filename
+      return base + 'media/' + filename
     })
   }
 
@@ -71,7 +71,7 @@ async function exportCanvas(output: string, cookie: string) {
       if (!selectedIds.has(target)) throw new Error('Unpublished navigation destination in ' + id)
     }
     return {
-      id, canvasId: 'prochay', pageId: 'demo', name: frame.name,
+      id, canvasId, pageId: 'demo', name: frame.name,
       x: index * 420, y: 0, width: frame.width, height: frame.height, createdAt: 0, updatedAt: 1, html,
     }
   })
@@ -81,7 +81,7 @@ async function exportCanvas(output: string, cookie: string) {
   })
   const tokens = (source.tokens ?? []).map(({ name, type, value, order }) => ({ name, type, value, order }))
   const canvas = {
-    id: 'prochay', name: 'ПРОЧАЙ', role: 'view', pages: [{ id: 'demo', name: 'ПРОЧАЙ', startFrameId: start }],
+    id: canvasId, name: 'ПРОЧАЙ', role: 'view', pages: [{ id: 'demo', name: 'ПРОЧАЙ', startFrameId: start }],
     frames, components, tokens, tokenThemes: source.tokenThemes ?? [],
   }
 
@@ -95,12 +95,16 @@ async function exportCanvas(output: string, cookie: string) {
   return { screens: frames.length, images: media.size }
 }
 
-function copyPlayer(output: string, player: string) {
+function copyPlayer(output: string, player: string, base: string) {
   const dist = join(player, 'dist')
   cpSync(join(dist, 'assets'), join(output, 'assets'), { recursive: true })
-  const route = join(output, 'c/prochay/proto')
-  mkdirSync(route, { recursive: true })
-  for (const directory of [output, route]) copyFileSync(join(dist, 'index.html'), join(directory, 'index.html'))
+  const index = readFileSync(join(dist, 'index.html'), 'utf8').replace('<base href="/">', `<base href="${base}">`)
+  writeFileSync(join(output, 'index.html'), index)
+  if (base === '/') {
+    const route = join(output, 'c/prochay/proto')
+    mkdirSync(route, { recursive: true })
+    writeFileSync(join(route, 'index.html'), index)
+  }
 
   const source = join(output, 'source')
   mkdirSync(source)
@@ -125,12 +129,15 @@ async function main() {
     allowPositionals: true,
     options: {
       player: { type: 'string' }, 'cookie-file': { type: 'string' },
-      publish: { type: 'boolean' }, help: { type: 'boolean', short: 'h' },
+      publish: { type: 'boolean' }, review: { type: 'string' }, help: { type: 'boolean', short: 'h' },
     },
   })
-  const usage = 'Usage: node export.ts (OUTPUT | --publish) [--player DIRECTORY] [--cookie-file FILE]'
+  const usage = 'Usage: node export.ts (OUTPUT | --publish) [--review PR_NUMBER] [--player DIRECTORY] [--cookie-file FILE]'
   if (values.help) return console.log(usage)
   if (positionals.length !== (values.publish ? 0 : 1)) throw new Error(usage)
+  if (values.review !== undefined && !/^[1-9]\d*$/.test(values.review)) throw new Error('Expected a positive PR number')
+  const canvasId = values.review ? `review-${values.review}` : 'prochay'
+  const base = values.review ? `/c/${canvasId}/proto/` : '/'
   const cookie = values['cookie-file'] ? readFileSync(values['cookie-file'], 'utf8').trim() : process.env.DOOP_COOKIE
   if (!cookie) throw new Error('Provide --cookie-file or DOOP_COOKIE')
 
@@ -140,13 +147,14 @@ async function main() {
   mkdirSync(parent, { recursive: true })
   const staging = mkdtempSync(join(parent, '.prochay-export-'))
   try {
-    const { screens, images } = await exportCanvas(staging, cookie)
-    copyPlayer(staging, values.player ? resolve(values.player) : join(import.meta.dirname, 'player'))
+    const { screens, images } = await exportCanvas(staging, cookie, canvasId, base)
+    copyPlayer(staging, values.player ? resolve(values.player) : join(import.meta.dirname, 'player'), base)
     if (output) {
       renameSync(staging, output)
     } else {
       execFileSync('rclone', [
-        'sync', staging, ':sftp:/srv/prochay-demo/current',
+        'sync', staging, ':sftp:/srv/prochay-demo/current' + base,
+        ...(values.review ? [] : ['--exclude', '/c/review-*/**']),
         '--config', '',
         '--sftp-ssh', 'ssh -o BatchMode=yes -o StrictHostKeyChecking=yes vpn',
         '--sftp-known-hosts-file', '~/.ssh/known_hosts',

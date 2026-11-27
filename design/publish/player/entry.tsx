@@ -9,7 +9,7 @@ if (!container) throw new Error('Не удалось открыть плеер.'
 const root = createRoot(container)
 
 async function openPrototype() {
-  const response = await fetch('/canvas.json')
+  const response = await fetch('canvas.json')
   if (!response.ok) throw new Error('Не удалось загрузить каталог.')
   useStore.getState().setCanvas(await response.json())
   const canvas = useStore.getState().canvas

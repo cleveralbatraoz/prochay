@@ -7,6 +7,7 @@ import { frameRuntime } from './node_modules/doop/src/frame-runtime/vitePlugin.t
 const staticView = fileURLToPath(new URL('./static-view.ts', import.meta.url))
 
 export default defineConfig({
+  base: './',
   plugins: [react(), tailwindcss(), frameRuntime()],
   resolve: {
     alias: {
