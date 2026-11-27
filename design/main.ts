@@ -3,7 +3,8 @@ import { renderCatalog, renderProduct, updateSearch } from './screens/catalog'
 import { renderCart, renderFavorites } from './screens/lists'
 import { createSession } from './shop-session'
 
-type View = { key: string; query: string; top: number; product?: string }
+type CatalogAnchor = { product: string; width: number; height: number }
+type View = { key: string; query: string; top: number; product?: string; anchor?: CatalogAnchor }
 
 const groups = new Map([
   ['catalog', 'all'], ['catalog-tea', 'tea'], ['catalog-ware', 'ware'], ['catalog-accessories', 'accessories'],
@@ -32,9 +33,42 @@ const catalogViews = new Map<string, View>()
 const views = new Map([[index, view]])
 history.replaceState({ shopIndex: index }, '')
 
+function catalogCard(id: string) {
+  return page.querySelector<HTMLButtonElement>(`[data-product="${CSS.escape(id)}"]`)
+}
+
+function visibleCatalogAnchor() {
+  if (!view.top && !view.product) return
+  const top = page.querySelector<HTMLElement>('.catalog-tabs')!.getBoundingClientRect().bottom
+  const bottom = page.getBoundingClientRect().bottom
+  const isVisible = (card: HTMLElement) => {
+    const rect = card.getBoundingClientRect()
+    return rect.height > 0 && rect.bottom > top && rect.top < bottom
+  }
+  const selected = view.product && catalogCard(view.product)
+  const card = selected && isVisible(selected) ? selected :
+    Array.from(page.querySelectorAll<HTMLButtonElement>('[data-product]')).find(isVisible)
+  if (card) return { product: card.dataset.product!, width: page.clientWidth, height: page.clientHeight }
+}
+
+function restoreCatalogAnchor(anchor: CatalogAnchor) {
+  if (anchor.width === page.clientWidth && anchor.height === page.clientHeight) return
+  const card = catalogCard(anchor.product)
+  if (!card) return
+  const rect = card.getBoundingClientRect()
+  const top = page.querySelector<HTMLElement>('.catalog-tabs')!.getBoundingClientRect().bottom
+  const bottom = page.getBoundingClientRect().bottom
+  const height = bottom - top
+  const target = rect.height > height ? card.querySelector('.product-name, .hero-name')!.getBoundingClientRect() : rect
+  if (target.top < top || target.bottom > bottom) {
+    page.scrollTop += target.top - top - Math.max(0, (height - target.height) / 2)
+  }
+}
+
 function remember() {
   view.top = page.scrollTop
   if (groups.has(view.key)) {
+    view.anchor = visibleCatalogAnchor()
     lastCatalog = { ...view }
     catalogViews.set(view.key, lastCatalog)
   }
@@ -54,7 +88,7 @@ function display() {
   } else {
     renderCatalog(page, groups.get(view.key)!, view.query)
     if (view.product) {
-      page.querySelector<HTMLElement>(`[data-product="${CSS.escape(view.product)}"]`)?.focus({ preventScroll: true })
+      catalogCard(view.product)?.focus({ preventScroll: true })
     }
   }
   const brandHeader = page.querySelector('header.catalog-header') ?? topbar
@@ -66,6 +100,7 @@ function display() {
   }
   document.title = (page.querySelector('h1')?.textContent ?? 'Каталог') + ' · ПРОЧАЙ'
   page.scrollTop = view.top
+  if (view.anchor) restoreCatalogAnchor(view.anchor)
 }
 
 function displayNewPage() {
@@ -126,7 +161,12 @@ shell.addEventListener('click', event => {
       target.query = view.query
       const previous = catalogViews.get(route)
       const header = page.querySelector<HTMLElement>('.catalog-header')!
-      target.top = previous?.query === view.query ? previous.top : Math.min(page.scrollTop, header.offsetHeight)
+      if (previous?.query === view.query) {
+        target.top = previous.top
+        target.anchor = previous.anchor
+      } else {
+        target.top = Math.min(page.scrollTop, header.offsetHeight)
+      }
       navigate(target)
       page.querySelector<HTMLButtonElement>('.catalog-tabs [aria-current]')!.focus({ preventScroll: true })
       return
@@ -197,10 +237,4 @@ window.addEventListener('popstate', event => {
   displayNewPage()
 })
 
-function fitDemo() {
-  const scale = Math.min(1, document.body.clientWidth / shell.offsetWidth, document.body.clientHeight / shell.offsetHeight)
-  shell.style.setProperty('--scale', String(scale))
-}
-new ResizeObserver(fitDemo).observe(document.body)
-fitDemo()
 display()
