@@ -666,8 +666,17 @@ body {
   content: "";
 }
 
-.tea-shell .page:has(> .catalog-tabs) {
+.tea-shell .page:has(> .catalog-header) {
   padding-top: 0;
+}
+
+.tea-shell .catalog-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.tea-shell .catalog-results {
+  min-height: 100%;
 }
 
 .tea-shell .catalog-heading {
