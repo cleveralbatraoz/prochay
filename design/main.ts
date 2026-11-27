@@ -146,11 +146,14 @@ shell.addEventListener('click', event => {
     return
   }
 
-  const rowId = button.closest<HTMLElement>('[data-sku]')?.dataset.sku
+  const controlSelector = quantityChange ? `[data-quantity-change="${quantityChange}"]` : '[data-remove-favorite]'
+  const controlIndex = Array.from(page.querySelectorAll(controlSelector)).indexOf(button)
   remember()
   display()
-  if (rowId && quantityChange) {
-    page.querySelector<HTMLElement>(`[data-sku="${CSS.escape(rowId)}"] [data-quantity-change="${quantityChange}"]`)?.focus({ preventScroll: true })
+  if (controlIndex !== -1) {
+    const controls = page.querySelectorAll<HTMLButtonElement>(controlSelector)
+    const next = controls[Math.min(controlIndex, controls.length - 1)] ?? page.querySelector<HTMLButtonElement>('.end-actions button')
+    next?.focus({ preventScroll: true })
   }
 })
 
