@@ -25,6 +25,10 @@ export function variantsOf(product: Product): Variant[] {
   return [product, ...(product.variants ?? [])]
 }
 
+export function isMeasuredUnit(unit: string): boolean {
+  return /\s(?:г|кг|мл|л)$/.test(unit)
+}
+
 for (const product of products) {
   for (const variant of variantsOf(product)) skus.set(variant.id, { product, variant })
 }

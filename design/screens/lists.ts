@@ -1,4 +1,4 @@
-import { getProduct, getSku, imageUrl, rubles, variantsOf, type Product } from '../catalog/products'
+import { getProduct, getSku, imageUrl, isMeasuredUnit, rubles, variantsOf, type Product } from '../catalog/products'
 import { cartSummary, type Session } from '../shop-session'
 import cartMarkup from './cart.html?raw'
 import favoritesMarkup from './favorites.html?raw'
@@ -70,9 +70,9 @@ function favoriteCard(product: Product) {
   element(card, '.saved-title').textContent = product.name
   element(card, '.meta').textContent = [product.category, product.region ?? product.origin].filter(Boolean).join(' · ')
   const packs = variantsOf(product)
-  const units = packs.map(pack => pack.unit)
+  const units = packs.map(pack => pack.unit).filter(isMeasuredUnit)
   const unitLabel = element(card, '.row-meta')
-  if (units.length === 1 && product.unit === '1 шт.') {
+  if (units.length === 0) {
     unitLabel.remove()
   } else if (units.length > 1 && units.every(unit => unit.endsWith(' г'))) {
     unitLabel.textContent = listFormat.format(units.map(unit => unit.slice(0, -2))) + ' г'

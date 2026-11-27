@@ -1,4 +1,4 @@
-import { getProduct, imageUrl, products, rubles, variantsOf, type Product, type Variant } from '../catalog/products'
+import { getProduct, imageUrl, isMeasuredUnit, products, rubles, variantsOf, type Product, type Variant } from '../catalog/products'
 import catalogMarkup from './catalog.html?raw'
 import productMarkup from './product.html?raw'
 import { element, templates } from './template'
@@ -38,7 +38,7 @@ function productTile(product: Product, featured: boolean) {
   const price = element(tile, '.price')
   if (featured) {
     price.textContent = 'от ' + rubles(product.price)
-  } else if (product.unit === '1 шт.') {
+  } else if (!isMeasuredUnit(product.unit)) {
     price.textContent = rubles(product.price)
   } else {
     price.prepend(rubles(product.price) + ' ')
