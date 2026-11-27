@@ -287,7 +287,8 @@ body {
 }
 
 .tea-shell .card-photo {
-  aspect-ratio: 1.25;
+  contain: size;
+  aspect-ratio: 1;
   margin-bottom: 5px;
 }
 
