@@ -9,6 +9,8 @@ const groups = new Map([
   ['catalog', 'all'], ['catalog-tea', 'tea'], ['catalog-ware', 'ware'], ['catalog-accessories', 'accessories'],
 ])
 const shell = document.querySelector<HTMLElement>('.tea-shell')!
+const topbar = shell.querySelector<HTMLElement>('.topbar')!
+const brand = topbar.querySelector<HTMLElement>('.brand')!
 const page = shell.querySelector<HTMLElement>('.page')!
 const tabs = shell.querySelectorAll<HTMLButtonElement>('.bottom-nav button')
 const session = createSession()
@@ -26,12 +28,16 @@ function viewFromUrl() {
 let view = viewFromUrl()
 let index = 0
 let lastCatalog = freshView()
+const catalogViews = new Map<string, View>()
 const views = new Map([[index, view]])
 history.replaceState({ shopIndex: index }, '')
 
 function remember() {
   view.top = page.scrollTop
-  if (groups.has(view.key)) lastCatalog = { ...view }
+  if (groups.has(view.key)) {
+    lastCatalog = { ...view }
+    catalogViews.set(view.key, lastCatalog)
+  }
 }
 
 function display() {
@@ -51,6 +57,9 @@ function display() {
       page.querySelector<HTMLElement>(`[data-product="${CSS.escape(view.product)}"]`)?.focus({ preventScroll: true })
     }
   }
+  const brandHeader = page.querySelector('header.catalog-header') ?? topbar
+  brandHeader.prepend(brand)
+  topbar.hidden = brandHeader !== topbar
   for (const button of tabs) {
     if (button.dataset.route === tab) button.setAttribute('aria-current', 'page')
     else button.removeAttribute('aria-current')
@@ -91,7 +100,15 @@ shell.addEventListener('click', event => {
     if (route === view.key || (button.matches('.tab') && route === 'catalog' && groups.has(view.key))) return
     if (route === 'catalog' && !groups.has(view.key)) return navigate({ ...lastCatalog })
     const target = freshView(route)
-    if (groups.has(route) && groups.has(view.key)) target.query = view.query
+    if (groups.has(route) && groups.has(view.key)) {
+      target.query = view.query
+      const previous = catalogViews.get(route)
+      const header = page.querySelector<HTMLElement>('.catalog-header')!
+      target.top = previous?.query === view.query ? previous.top : Math.min(page.scrollTop, header.offsetHeight)
+      navigate(target)
+      page.querySelector<HTMLButtonElement>('.catalog-tabs [aria-current]')!.focus({ preventScroll: true })
+      return
+    }
     return navigate(target)
   }
   if (button.hasAttribute('data-back')) {

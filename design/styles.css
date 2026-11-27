@@ -56,17 +56,14 @@ body {
 }
 
 .tea-shell .topbar {
-  display: flex;
-  height: 64px;
-  flex: 0 0 64px;
-  align-items: center;
-  padding: 0 var(--gutter);
+  flex: none;
+  padding-inline: var(--gutter);
 }
 
 .tea-shell .brand {
-  display: inline-flex;
+  display: flex;
   width: 130px;
-  height: 25px;
+  height: 64px;
   align-items: center;
   gap: 5px;
   color: var(--color-ink);
@@ -669,8 +666,17 @@ body {
   content: "";
 }
 
-.tea-shell .page:has(> .catalog-tabs) {
+.tea-shell .page:has(> .catalog-header) {
   padding-top: 0;
+}
+
+.tea-shell .catalog-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.tea-shell .catalog-results {
+  min-height: 100%;
 }
 
 .tea-shell .catalog-heading {
