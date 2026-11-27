@@ -6,9 +6,10 @@ import {
 import { tmpdir } from 'node:os'
 import { dirname, join, resolve } from 'node:path'
 import { parseArgs } from 'node:util'
+import type { Product } from './player/shop-state.ts'
 
 type Manifest = {
-  frames: { frameId: string }[]
+  frames: { id: string; frameId: string }[]
   generated?: { frames: Record<string, string> }
   nativeStartFrameId: string
 }
@@ -46,10 +47,16 @@ async function exportCanvas(output: string, cookie: string, canvasId: string, ba
   if (source.id !== config.canvas) throw new Error('Unexpected source canvas')
 
   const manifest: Manifest = JSON.parse(readFileSync(join(design, 'prototype.json'), 'utf8'))
-  const selected = [...manifest.frames.map(frame => frame.frameId), ...Object.values(manifest.generated?.frames ?? {})]
-  const selectedIds = new Set(selected)
+  const selected = [
+    ...manifest.frames.map(({ id, frameId }) => ({ key: id, id: frameId })),
+    ...Object.entries(manifest.generated?.frames ?? {}).map(([key, id]) => ({ key, id })),
+  ]
+  const selectedIds = new Set(selected.map(frame => frame.id))
+  const selectedKeys = new Set(selected.map(frame => frame.key))
   const start = manifest.nativeStartFrameId
-  if (selectedIds.size !== selected.length || !selectedIds.has(start)) throw new Error('Invalid frame selection')
+  if (selectedIds.size !== selected.length || selectedKeys.size !== selected.length || !selectedIds.has(start)) {
+    throw new Error('Invalid frame selection')
+  }
 
   const media = new Set<string>()
   function localAssets(markup: string) {
@@ -62,7 +69,7 @@ async function exportCanvas(output: string, cookie: string, canvasId: string, ba
   }
 
   const byId = new Map(source.frames.map(frame => [frame.id, frame]))
-  const frames = selected.map((id, index) => {
+  const frames = selected.map(({ key, id }, index) => {
     const frame = byId.get(id)
     if (!frame) throw new Error('Missing frame in source canvas: ' + id)
     const html = localAssets(frame.html)
@@ -71,7 +78,7 @@ async function exportCanvas(output: string, cookie: string, canvasId: string, ba
       if (!selectedIds.has(target)) throw new Error('Unpublished navigation destination in ' + id)
     }
     return {
-      id, canvasId, pageId: 'demo', name: frame.name,
+      key, id, canvasId, pageId: 'demo', name: frame.name,
       x: index * 420, y: 0, width: frame.width, height: frame.height, createdAt: 0, updatedAt: 1, html,
     }
   })
@@ -80,9 +87,14 @@ async function exportCanvas(output: string, cookie: string, canvasId: string, ba
     return { id, name, template: localAssets(template), css: localAssets(css), head: [] }
   })
   const tokens = (source.tokens ?? []).map(({ name, type, value, order }) => ({ name, type, value, order }))
+  const catalog: Product[] = JSON.parse(readFileSync(join(design, 'catalog/products.json'), 'utf8'))
+  const products = catalog.map(({ id, name, unit, price, variants }) => ({
+    id, name, unit, price,
+    variants: variants?.map(({ id, unit, price }) => ({ id, unit, price })),
+  }))
   const canvas = {
     id: canvasId, name: 'ПРОЧАЙ', role: 'view', pages: [{ id: 'demo', name: 'ПРОЧАЙ', startFrameId: start }],
-    frames, components, tokens, tokenThemes: source.tokenThemes ?? [],
+    frames, components, tokens, tokenThemes: source.tokenThemes ?? [], products,
   }
 
   mkdirSync(join(output, 'media'))
@@ -113,8 +125,9 @@ function copyPlayer(output: string, player: string, base: string) {
   copyFileSync(join(dist, 'licenses.txt'), join(source, 'third-party.txt'))
   execFileSync('tar', [
     '--no-xattrs', '-czf', join(source, 'player-source.tar.gz'), '-C', player,
-    'entry.tsx', 'index.html', 'static-view.ts', 'styles.css', 'vite.config.mts', 'package.json', 'package-lock.json', '.npmrc',
-    '-C', modules, 'doop/LICENSE', 'doop/src', 'doop/shared', 'doop/tsconfig.json', 'doop/package.json',
+    'entry.ts', 'shop-state.ts', 'catalog-search.ts', 'frame-aliases.json', 'shop.test.ts',
+    'index.html', 'styles.css', 'vite.config.mts', 'package.json', 'package-lock.json', '.npmrc',
+    '-C', modules, 'doop/LICENSE', 'doop/shared', 'doop/package.json',
   ], { env: { ...process.env, COPYFILE_DISABLE: '1' } })
   writeFileSync(join(source, 'index.html'), `<!doctype html><html lang="ru"><meta charset="utf-8"><title>Плеер Doop</title>
 <h1>Плеер Doop</h1><p><a href="LICENSE.txt">GNU AGPL 3.0</a></p>

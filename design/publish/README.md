@@ -12,6 +12,12 @@ npm audit --prefix design/publish/player --audit-level=low
 npm run build --prefix design/publish/player
 ```
 
+После публикации проверь поиск, корзину, избранное и возврат из карточки в гостевом Chromium. В `DEMO_URL` передай ссылку на каталог проверяемой версии. Для уже установленного Chromium укажи путь к исполняемому файлу в `CHROMIUM_PATH`. Браузер для Playwright также можно установить командой `npm exec --prefix design/publish/player -- playwright-core install chromium`.
+
+```sh
+DEMO_URL=http://157.22.181.155/ npm test --prefix design/publish/player
+```
+
 После слияния изменений макета обнови локальную ветку `main` и опубликуй её холст.
 
 ```sh

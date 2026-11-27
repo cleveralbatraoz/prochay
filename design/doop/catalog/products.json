@@ -6,6 +6,9 @@
     "category": "Шу пуэр",
     "price": 850,
     "unit": "100 г",
+    "variants": [
+      { "id": "tea-brick", "unit": "500 г", "price": 4250 }
+    ],
     "photo": "https://www.prochay.ru/upload/iblock/b5a/r59sa0cvhwu5p3qbf1m81ahn0e4cwc0n/shu-puer-zelyenye-kholmy-yunnani-500gr-2024-prochay-ru.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/proizvodstvo-prochay/2135/"
   },
