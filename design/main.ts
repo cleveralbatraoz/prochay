@@ -9,6 +9,8 @@ const groups = new Map([
   ['catalog', 'all'], ['catalog-tea', 'tea'], ['catalog-ware', 'ware'], ['catalog-accessories', 'accessories'],
 ])
 const shell = document.querySelector<HTMLElement>('.tea-shell')!
+const topbar = shell.querySelector<HTMLElement>('.topbar')!
+const brand = topbar.querySelector<HTMLElement>('.brand')!
 const page = shell.querySelector<HTMLElement>('.page')!
 const tabs = shell.querySelectorAll<HTMLButtonElement>('.bottom-nav button')
 const session = createSession()
@@ -51,6 +53,9 @@ function display() {
       page.querySelector<HTMLElement>(`[data-product="${CSS.escape(view.product)}"]`)?.focus({ preventScroll: true })
     }
   }
+  const brandHeader = page.querySelector('header.catalog-header') ?? topbar
+  brandHeader.prepend(brand)
+  topbar.hidden = brandHeader !== topbar
   for (const button of tabs) {
     if (button.dataset.route === tab) button.setAttribute('aria-current', 'page')
     else button.removeAttribute('aria-current')
