@@ -514,20 +514,10 @@
   margin-bottom: 6px;
 }
 
-.tea-shell .leaf-motion {
+.tea-shell .tea-leaf {
   display: grid;
   color: var(--color-olive);
   place-items: center;
-  animation: prochay-unfurl 180ms ease-out;
-}
-
-@keyframes prochay-unfurl {
-  from { opacity: .35; transform: translateY(3px) rotate(-18deg); }
-  to { opacity: 1; transform: none; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .tea-shell .leaf-motion { animation: none; }
 }
 
 .tea-shell .field-title {

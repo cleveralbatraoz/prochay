@@ -44,7 +44,7 @@ def category_tabs(active):
         if group == active:
             attributes = 'aria-current="true"'
         else:
-            attributes = f'data-doop-on="click" data-doop-action="navigate:{category_frame(group)}" data-doop-transition="instant"'
+            attributes = f'data-doop-on="click" data-doop-action="navigate:{category_frame(group)}"'
         buttons.append(f'<button type="button" {attributes}>{label}</button>')
     return "\n".join(buttons)
 
@@ -110,7 +110,7 @@ def render(output):
         for quantity, prefix in ((1, "bag"), (2, "pair")):
             decrease = "cart-empty" if quantity == 1 else "bag-" + slug
             if quantity == 1:
-                increase = f'<button type="button" class="step" aria-label="Увеличить количество" data-doop-on="click" data-doop-action="navigate:pair-{slug}" data-doop-transition="instant">+</button>'
+                increase = f'<button type="button" class="step" aria-label="Увеличить количество" data-doop-on="click" data-doop-action="navigate:pair-{slug}">+</button>'
             else:
                 increase = '<button type="button" class="step limit" aria-label="Максимум две единицы" disabled>+</button>'
             bag = templates["bag"].substitute(fields, quantity=quantity, total=rubles(product["price"] * quantity),
