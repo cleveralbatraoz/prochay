@@ -164,10 +164,4 @@ window.addEventListener('popstate', event => {
   display()
 })
 
-function fitDemo() {
-  const scale = Math.min(1, document.body.clientWidth / shell.offsetWidth, document.body.clientHeight / shell.offsetHeight)
-  shell.style.setProperty('--scale', String(scale))
-}
-new ResizeObserver(fitDemo).observe(document.body)
-fitDemo()
 display()
