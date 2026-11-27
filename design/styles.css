@@ -60,8 +60,6 @@ body {
   height: 64px;
   flex: 0 0 64px;
   align-items: center;
-  justify-content: space-between;
-  gap: 16px;
   padding: 0 var(--gutter);
 }
 
@@ -89,12 +87,6 @@ body {
   min-height: 44px;
   min-width: 44px;
   align-items: center;
-}
-
-.tea-shell .club {
-  color: var(--color-muted);
-  font-size: 13px;
-  font-weight: 500;
 }
 
 .tea-shell .page {
