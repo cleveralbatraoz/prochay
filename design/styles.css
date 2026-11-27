@@ -358,7 +358,6 @@ body {
 }
 
 .tea-shell .pack {
-  position: relative;
   display: flex;
   min-height: 76px;
   flex-direction: column;
@@ -680,17 +679,6 @@ body {
   width: 100%;
   object-fit: cover;
   border-radius: 8px;
-}
-
-.tea-shell .pack[data-selected="true"]::after {
-  position: absolute;
-  top: 9px;
-  right: 9px;
-  width: 8px;
-  height: 8px;
-  border: 2px solid var(--color-clay);
-  border-radius: 50%;
-  content: "";
 }
 
 .tea-shell .page:has(> .catalog-header) {
