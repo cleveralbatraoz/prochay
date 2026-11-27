@@ -1,30 +1,34 @@
 <template id="catalog">
-  <div class="heading catalog-heading">
-    <h1></h1>
-    <span class="catalog-count" aria-live="polite" aria-atomic="true"></span>
-  </div>
-  <div class="catalog-search" role="search" aria-label="Поиск в каталоге">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
-      <circle cx="10.5" cy="10.5" r="6.5"></circle>
-      <path d="m16 16 4.5 4.5"></path>
-    </svg>
-    <input class="catalog-search-input" type="search" aria-label="Поиск по названию" placeholder="Поиск по названию" enterkeyhint="search" autocomplete="off">
-    <button type="button" class="catalog-search-clear" aria-label="Очистить поиск" hidden>
+  <header class="catalog-header">
+    <div class="heading catalog-heading">
+      <h1></h1>
+      <span class="catalog-count" aria-live="polite" aria-atomic="true"></span>
+    </div>
+    <div class="catalog-search" role="search" aria-label="Поиск в каталоге">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
-        <path d="m7 7 10 10M17 7 7 17"></path>
+        <circle cx="10.5" cy="10.5" r="6.5"></circle>
+        <path d="m16 16 4.5 4.5"></path>
       </svg>
-    </button>
-  </div>
-  <nav class="catalog-tabs" aria-label="Разделы каталога">
-    <button type="button" data-route="catalog">Все</button>
-    <button type="button" data-route="catalog-tea">Чай</button>
-    <button type="button" data-route="catalog-ware">Посуда</button>
-    <button type="button" data-route="catalog-accessories">Аксессуары</button>
-  </nav>
-  <div class="grid catalog-grid"></div>
-  <div class="empty catalog-no-results" hidden>
-    <h2>Ничего не найдено</h2>
-    <p>Попробуйте другое название.</p>
+      <input class="catalog-search-input" type="search" aria-label="Поиск по названию" placeholder="Поиск по названию" enterkeyhint="search" autocomplete="off">
+      <button type="button" class="catalog-search-clear" aria-label="Очистить поиск" hidden>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+          <path d="m7 7 10 10M17 7 7 17"></path>
+        </svg>
+      </button>
+    </div>
+  </header>
+  <div class="catalog-results">
+    <nav class="catalog-tabs" aria-label="Разделы каталога">
+      <button type="button" data-route="catalog">Все</button>
+      <button type="button" data-route="catalog-tea">Чай</button>
+      <button type="button" data-route="catalog-ware">Посуда</button>
+      <button type="button" data-route="catalog-accessories">Аксессуары</button>
+    </nav>
+    <div class="grid catalog-grid"></div>
+    <div class="empty catalog-no-results" hidden>
+      <h2>Ничего не найдено</h2>
+      <p>Попробуйте другое название.</p>
+    </div>
   </div>
 </template>
 
