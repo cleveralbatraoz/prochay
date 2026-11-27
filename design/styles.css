@@ -33,9 +33,9 @@ body {
 }
 
 .tea-shell {
-  --gutter: max(clamp(16px, 5.1%, 24px), calc((100% - 1120px) / 2));
+  --gutter: clamp(16px, 5.1%, 24px);
   box-sizing: border-box;
-  width: 100%;
+  width: min(100%, 440px);
   height: 100%;
   container-type: inline-size;
   min-height: 0;
@@ -107,9 +107,7 @@ body {
   display: none;
 }
 
-.tea-shell .page > *,
-.tea-shell .product-layout > *,
-.tea-shell .product-info > * {
+.tea-shell .page > * {
   flex-shrink: 0;
 }
 
@@ -147,7 +145,7 @@ body {
 }
 
 .tea-shell .heading h1,
-.tea-shell .product-info h1 {
+.tea-shell .page > h1 {
   font: 400 40px/1.03 var(--font-serif);
   letter-spacing: -.045em;
   overflow-wrap: break-word;
@@ -341,15 +339,7 @@ body {
   margin: 0 0 15px;
 }
 
-.tea-shell .product-layout,
-.tea-shell .product-info {
-  display: flex;
-  flex: 1 0 auto;
-  min-width: 0;
-  flex-direction: column;
-}
-
-.tea-shell .product-info > .meta {
+.tea-shell .page > .meta {
   margin-bottom: 6px;
 }
 
@@ -658,7 +648,7 @@ body {
 
 .tea-shell .empty + .end-actions { margin-top: 0; }
 
-.tea-shell .saved-item + .saved-item { margin-top: 24px; }
+.tea-shell .end-actions + .saved-feature { margin-top: 24px; }
 
 .tea-shell .saved-feature {
   position: relative;
@@ -863,49 +853,4 @@ body {
 .cart-content .add-pack .price {
   margin-inline-start: auto;
   font: 500 14px/1.2 var(--font-sans);
-}
-
-@container (min-width: 600px) {
-  .tea-shell .catalog-grid {
-    grid-template-columns: repeat(auto-fill, minmax(176px, 1fr));
-  }
-}
-
-@media (min-width: 600px), (orientation: landscape) {
-  @container (min-width: 480px) {
-    .tea-shell .catalog-feature .hero-link,
-    .tea-shell .product-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
-    }
-
-    .tea-shell .hero-caption {
-      align-content: center;
-    }
-
-    .tea-shell .hero-photo {
-      height: clamp(146px, 22cqw, 210px);
-    }
-
-    .tea-shell .product-layout {
-      column-gap: 24px;
-    }
-
-    .tea-shell .detail-photo,
-    .tea-shell .saved-feature {
-      align-self: start;
-    }
-
-    .tea-shell .saved-caption {
-      padding-top: 0;
-    }
-  }
-}
-
-@media (orientation: landscape) and (max-height: 520px) {
-  .tea-shell .brand,
-  .tea-shell .tab {
-    height: 44px;
-    min-height: 44px;
-  }
 }
