@@ -1,2 +1,4 @@
-@import 'doop/src/styles.css';
+@import 'doop/src/styles.css' source(none);
+@source './entry.tsx';
+@source './index.html';
 @source './node_modules/doop/src';

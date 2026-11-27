@@ -2,12 +2,12 @@
   "name": "prochay-demo-player",
   "private": true,
   "type": "module",
-  "packageManager": "bun@1.3.10",
+  "packageManager": "npm@12.2.3",
   "scripts": {
-    "build": "bun --bun vite build"
+    "build": "vite build"
   },
   "dependencies": {
-    "doop": "github:doop-design/doop#1c72db0d48961e15fb77595cf3f746c711bda20f",
+    "doop": "https://codeload.github.com/doop-design/doop/tar.gz/1c72db0d48961e15fb77595cf3f746c711bda20f",
     "react": "18.3.1",
     "react-dom": "18.3.1"
   },

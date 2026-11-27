@@ -3,6 +3,7 @@ import {
   copyFileSync, cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync,
   renameSync, rmSync, writeFileSync,
 } from 'node:fs'
+import { tmpdir } from 'node:os'
 import { dirname, join, resolve } from 'node:path'
 import { parseArgs } from 'node:util'
 
@@ -108,36 +109,48 @@ function copyPlayer(output: string, player: string) {
   copyFileSync(join(dist, 'licenses.txt'), join(source, 'third-party.txt'))
   execFileSync('tar', [
     '--no-xattrs', '-czf', join(source, 'player-source.tar.gz'), '-C', player,
-    'entry.tsx', 'index.html', 'styles.css', 'vite.config.mts', 'package.json', 'bun.lock',
-    '-C', modules, 'doop/LICENSE', 'doop/src', 'doop/shared', 'doop/tsconfig.json', 'doop/package.json', 'doop/bun.lock',
+    'entry.tsx', 'index.html', 'styles.css', 'vite.config.mts', 'package.json', 'package-lock.json', '.npmrc',
+    '-C', modules, 'doop/LICENSE', 'doop/src', 'doop/shared', 'doop/tsconfig.json', 'doop/package.json',
   ], { env: { ...process.env, COPYFILE_DISABLE: '1' } })
   writeFileSync(join(source, 'index.html'), `<!doctype html><html lang="ru"><meta charset="utf-8"><title>Плеер Doop</title>
 <h1>Плеер Doop</h1><p><a href="LICENSE.txt">GNU AGPL 3.0</a></p>
 <p><a href="third-party.txt">Лицензии зависимостей</a></p>
 <p><a href="https://github.com/doop-design/doop">Doop</a></p>
 <p><a href="player-source.tar.gz">Исходный код плеера и сборки</a></p>
-<p>В распакованном каталоге выполните <code>bun install --frozen-lockfile &amp;&amp; bun run build</code>.</p></html>`)
+<p>В распакованном каталоге выполните <code>npm ci &amp;&amp; npm run build</code>.</p></html>`)
 }
 
 async function main() {
   const { positionals, values } = parseArgs({
     allowPositionals: true,
-    options: { player: { type: 'string' }, 'cookie-file': { type: 'string' }, help: { type: 'boolean', short: 'h' } },
+    options: {
+      player: { type: 'string' }, 'cookie-file': { type: 'string' },
+      publish: { type: 'boolean' }, help: { type: 'boolean', short: 'h' },
+    },
   })
-  const usage = 'Usage: node export.ts OUTPUT [--player DIRECTORY] [--cookie-file FILE]'
+  const usage = 'Usage: node export.ts (OUTPUT | --publish) [--player DIRECTORY] [--cookie-file FILE]'
   if (values.help) return console.log(usage)
-  if (positionals.length !== 1) throw new Error(usage)
+  if (positionals.length !== (values.publish ? 0 : 1)) throw new Error(usage)
   const cookie = values['cookie-file'] ? readFileSync(values['cookie-file'], 'utf8').trim() : process.env.DOOP_COOKIE
   if (!cookie) throw new Error('Provide --cookie-file or DOOP_COOKIE')
 
-  const output = resolve(positionals[0])
-  if (existsSync(output) && readdirSync(output).length) throw new Error('Choose an empty output directory')
-  mkdirSync(dirname(output), { recursive: true })
-  const staging = mkdtempSync(join(dirname(output), '.prochay-export-'))
+  const output = values.publish ? undefined : resolve(positionals[0])
+  const parent = output ? dirname(output) : tmpdir()
+  if (output && existsSync(output) && readdirSync(output).length) throw new Error('Choose an empty output directory')
+  mkdirSync(parent, { recursive: true })
+  const staging = mkdtempSync(join(parent, '.prochay-export-'))
   try {
     const { screens, images } = await exportCanvas(staging, cookie)
     copyPlayer(staging, values.player ? resolve(values.player) : join(import.meta.dirname, 'player'))
-    renameSync(staging, output)
+    if (output) {
+      renameSync(staging, output)
+    } else {
+      execFileSync('rclone', [
+        'sync', staging, ':sftp:/srv/prochay-demo/current',
+        '--sftp-ssh', 'ssh -o BatchMode=yes -o StrictHostKeyChecking=yes vpn',
+        '--sftp-shell-type', 'none', '--ignore-times',
+      ], { stdio: 'inherit' })
+    }
     console.log(`${screens} screens, ${images} images`)
   } finally {
     rmSync(staging, { recursive: true, force: true })

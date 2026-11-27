@@ -1,25 +1,30 @@
 # Публикация демо
 
-Демо показывает принятый в `main` холст Doop. После слияния дизайн-PR обнови локальную ветку `main`. Команды выполняются из корня проекта при работающем Doop.
+На рабочем компьютере нужны Node.js 26 (от 26.13.1), npm 12, работающий Doop и SSH-доступ по имени `vpn`. Для передачи файлов установи rclone (на macOS — `brew install rclone`). На VPS Caddy раздаёт статику из `/srv/prochay-demo/current`. [Установка rclone](https://rclone.org/install/)
 
-Для сборки плеера нужны Node.js и Bun. На рабочем Mac Bun доступен через `export PATH="$PWD/.local/doop-server/bin:$PATH"`. Собери плеер при первой публикации и при изменениях в `design/publish/player/`.
-
-```sh
-(cd design/publish/player && bun install --frozen-lockfile && bun run build)
-```
-
-Bun получает исходники Doop из GitHub по ревизии в [package.json](player/package.json). Версии зависимостей зафиксированы в [bun.lock](player/bun.lock). Для публикации изменений каталога используй готовую сборку.
+Команды выполняются из корня репозитория. Собери плеер при первом запуске и после изменений в `design/publish/player/`.
 
 ```sh
-(
-  set -e
-  release_dir=$(mktemp -d)
-  trap 'rm -rf "$release_dir"' EXIT
-  node design/publish/export.ts "$release_dir" --cookie-file .local/doop-server/private/cookie-header
-  bash scripts/publish-demo.sh "$release_dir"
-)
+npm ci --prefix design/publish/player
+npm run build --prefix design/publish/player
 ```
 
-Экспорт использует локальную сборку штатного плеера. Её исходники, лицензия и команда сборки доступны в разделе `/source/` опубликованного демо. Авторизация Doop нужна для чтения холста на рабочем компьютере.
+После слияния изменений макета обнови локальную ветку `main` и опубликуй её холст.
 
-На сервере `ssh vpn` Caddy обслуживает `/srv/prochay-demo/current` по [конфигурации сайта](Caddyfile). Скрипт переключает эту ссылку после загрузки файлов, сверяет стартовую страницу и данные каталога через HTTP и возвращает предыдущую версию при ошибке. На сервере остаются две последние успешные публикации. После обновления проверь каталог и переход в карточку по публичной ссылке из [дизайн-дока](../spec.md).
+```sh
+node design/publish/export.ts --publish --cookie-file .local/doop-server/private/cookie-header
+```
+
+Экспорт готовит плеер, экраны, фотографии и архив исходников во временной папке. Затем [rclone sync](https://rclone.org/commands/rclone_sync/) перезаписывает файлы сайта по SFTP и удаляет устаревшие. Во время передачи сайт может показывать неполную сборку. При обрыве повтори команду. После публикации открой каталог и карточку товара по [публичной ссылке](http://157.22.181.155/).
+
+Для локальной копии укажи путь к пустой папке вместо `--publish`.
+
+## Переход с прежних релизов
+
+Если на VPS `current` ещё ссылается на каталог в `releases/`, после первой успешной синхронизации перенеси этот каталог на место ссылки.
+
+```sh
+ssh vpn 'cd /srv/prochay-demo && dir=$(readlink current) && test -d "$dir" && unlink current && mv -T -- "$dir" current'
+```
+
+По пути `current` теперь лежит сама папка сайта. Открой демо и после проверки удали из `/srv/prochay-demo/` старый каталог `releases/` и файл `.publish.lock`. [Путь в конфигурации Caddy](Caddyfile) остаётся тем же.
