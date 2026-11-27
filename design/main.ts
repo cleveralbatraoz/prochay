@@ -40,7 +40,11 @@ function remember() {
   }
 }
 
+let catalogPhotos: IntersectionObserver | undefined
+
 function display() {
+  catalogPhotos?.disconnect()
+  catalogPhotos = undefined
   const sku = getSku(view.key)
   let tab = 'catalog'
   if (sku) {
@@ -52,7 +56,7 @@ function display() {
     tab = 'cart'
     renderCart(page, session)
   } else {
-    renderCatalog(page, groups.get(view.key)!, view.query)
+    catalogPhotos = renderCatalog(page, groups.get(view.key)!, view.query)
     if (view.product) {
       page.querySelector<HTMLElement>(`[data-product="${CSS.escape(view.product)}"]`)?.focus({ preventScroll: true })
     }
