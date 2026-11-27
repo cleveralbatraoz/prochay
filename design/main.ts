@@ -98,9 +98,24 @@ shell.addEventListener('input', event => {
   if (event.target instanceof HTMLInputElement && event.target.type === 'search') search(event.target.value)
 })
 
+let displacedPointer: { button: HTMLButtonElement; x: number; y: number; time: number; type: string } | undefined
+
+function rememberDisplacedPointer(event: PointerEvent) {
+  if (event.detail === 0) return
+  const { clientX: x, clientY: y, timeStamp: time, pointerType: type } = event
+  queueMicrotask(() => {
+    const button = document.elementFromPoint(x, y)?.closest('button')
+    if (button) displacedPointer = { button, x, y, time, type }
+  })
+}
+
 shell.addEventListener('click', event => {
   const button = event.target instanceof Element ? event.target.closest('button') : null
   if (!button) return
+  if (displacedPointer?.button === button && event.detail > 0 && event.pointerType === displacedPointer.type &&
+      event.timeStamp - displacedPointer.time < 500 &&
+      Math.hypot(event.clientX - displacedPointer.x, event.clientY - displacedPointer.y) <= 10) return
+  displacedPointer = undefined
   const { route, product, variant, removeFavorite, addSku, quantityChange } = button.dataset
 
   if (route) {
@@ -136,6 +151,7 @@ shell.addEventListener('click', event => {
 
   const sku = getSku(view.key)
   if (sku && button.hasAttribute('data-buy')) {
+    rememberDisplacedPointer(event)
     session.changeQuantity(sku.variant.id, 1)
     return navigate(freshView('cart'))
   }
@@ -143,12 +159,14 @@ shell.addEventListener('click', event => {
     session.toggleFavorite(sku.product.id)
     if (session.favorites.has(sku.product.id)) return navigate(freshView('favorites'))
   } else if (removeFavorite) {
+    rememberDisplacedPointer(event)
     session.toggleFavorite(removeFavorite)
   } else if (addSku) {
     session.changeQuantity(addSku, 1)
   } else if (quantityChange) {
     const id = button.closest<HTMLElement>('[data-sku]')!.dataset.sku!
     session.changeQuantity(id, Number(quantityChange))
+    if (!session.quantities.has(id)) rememberDisplacedPointer(event)
   } else {
     return
   }
@@ -162,6 +180,7 @@ shell.addEventListener('click', event => {
 })
 
 window.addEventListener('popstate', event => {
+  displacedPointer = undefined
   remember()
   index = Number.isInteger(event.state?.shopIndex) ? event.state.shopIndex : 0
   const target = viewFromUrl()
