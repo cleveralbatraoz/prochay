@@ -1,3 +1,4 @@
+import { formatPackSize, unitKind } from '../catalog/pack-size'
 import { getProduct, getSku, imageUrl, rubles, variantsOf, type Product } from '../catalog/products'
 import { cartSummary, type Session } from '../shop-session'
 import cartMarkup from './cart.html?raw'
@@ -24,8 +25,9 @@ export function renderCart(page: HTMLElement, session: Session) {
     element(row, '.cart-row').dataset.sku = variant.id
     element<HTMLImageElement>(row, 'img').src = imageUrl(product, variant.id === product.id)
     element(row, 'h2').textContent = product.name
-    element(row, 'p').textContent = product.category + ' · ' + variant.unit
-    const label = product.name + ', ' + variant.unit
+    const sizeLabel = formatPackSize(variant.size)
+    element(row, 'p').textContent = product.category + ' · ' + sizeLabel
+    const label = product.name + ', ' + sizeLabel
     element(row, '.stepper').setAttribute('aria-label', 'Количество: ' + label)
     element(row, '[data-quantity-change="-1"]').setAttribute('aria-label', 'Уменьшить количество: ' + label)
     element(row, '[data-quantity-change="1"]').setAttribute('aria-label', 'Увеличить количество: ' + label)
@@ -38,7 +40,7 @@ export function renderCart(page: HTMLElement, session: Session) {
       if (session.quantities.has(variant.id)) continue
       const shortcut = cartTemplate('add-pack')
       element(shortcut, '.add-pack').dataset.addSku = variant.id
-      element(shortcut, '.pack-label').textContent = 'Добавить ' + variant.unit
+      element(shortcut, '.pack-label').textContent = 'Добавить ' + formatPackSize(variant.size)
       element(shortcut, '.price').textContent = rubles(variant.price)
       footer.before(shortcut)
     }
@@ -70,11 +72,16 @@ function favoriteCard(product: Product) {
   element(card, '.saved-title').textContent = product.name
   element(card, '.meta').textContent = [product.category, product.region ?? product.origin].filter(Boolean).join(' · ')
   const packs = variantsOf(product)
-  const units = packs.map(pack => pack.unit)
-  if (units.length > 1 && units.every(unit => unit.endsWith(' г'))) {
-    element(card, '.row-meta').textContent = listFormat.format(units.map(unit => unit.slice(0, -2))) + ' г'
+  const sizes = packs.map(pack => pack.size).filter(size => unitKind(size.unit) !== 'count')
+  const unitLabel = element(card, '.row-meta')
+  if (sizes.length === 0) {
+    unitLabel.remove()
   } else {
-    element(card, '.row-meta').textContent = listFormat.format(units)
+    const sameUnit = sizes.every(size => size.unit === sizes[0].unit)
+    const labels = sizes.map((size, index) =>
+      sameUnit && index < sizes.length - 1 ? size.amount.toLocaleString('ru-RU') : formatPackSize(size)
+    )
+    unitLabel.textContent = listFormat.format(labels)
   }
   const minimum = Math.min(...packs.map(pack => pack.price))
   element(card, '.price').textContent = (packs.length > 1 ? 'от ' : '') + rubles(minimum)
