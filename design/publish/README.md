@@ -17,7 +17,7 @@ bash .local/http-demo/player/build.sh
   set -e
   release_dir=$(mktemp -d)
   trap 'rm -rf "$release_dir"' EXIT
-  python3 design/publish/export.py "$release_dir" --player .local/http-demo/player --cookie-file .local/doop-server/private/cookie-header
+  node design/publish/export.ts "$release_dir" --player .local/http-demo/player --cookie-file .local/doop-server/private/cookie-header
   bash scripts/publish-demo.sh "$release_dir"
 )
 ```
