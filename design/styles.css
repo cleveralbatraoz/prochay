@@ -98,7 +98,6 @@ body {
   flex-direction: column;
   overflow-x: hidden;
   overflow-y: auto;
-  overscroll-behavior-y: contain;
   padding: 4px var(--gutter) 24px;
   scrollbar-width: none;
 }
