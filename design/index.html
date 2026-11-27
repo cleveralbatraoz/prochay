@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <title>Каталог · ПРОЧАЙ</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="./styles.css">
+    <script type="module" src="./main.ts"></script>
+  </head>
+  <body>
+    <div class="tea-shell">
+      <div class="shelf">
+        <header class="topbar">
+          <span class="brand">
+            <svg viewBox="0 0 455 418" fill="currentColor" aria-hidden="true">
+              <path d="M225.229 146.53C288.729 136.33 321.229 65.4305 239.429 64.0305C166.829 61.3305 160.029 35.4304 185.929 14.4304C224.029 -13.2696 286.629 7.43045 285.429 7.43045C212.529 1.93045 198.829 41.8304 259.029 49.3304C343.829 62.4304 315.129 125.43 294.329 142.33C203.629 216.13 68.9292 151.23 65.5292 149.63C59.3292 146.73 56.2292 151.33 56.2292 151.33C-18.6708 275.23 88.9292 433.13 276.329 410.33C275.929 410.43 276.029 410.43 275.929 410.43C24.8292 462.63 -53.5708 220.73 35.3292 99.7304C35.5292 99.8304 140.929 162.13 225.229 146.53Z" />
+              <path d="M273.529 312.93C273.529 312.93 286.729 269.93 341.329 252.33C401.529 233.73 361.129 159.331 313.529 196.131C313.529 196.131 310.129 160.63 347.229 150.33C352.029 149.03 416.129 138.43 412.629 208.93C403.229 294.13 321.929 250.63 273.529 312.93Z" />
+              <path d="M63.6293 189.93C132.929 173.23 161.629 318.73 281.029 239.23C253.329 447.03 11.0293 367.53 53.7293 198.83C55.5293 192.63 59.1293 191.13 63.6293 189.93Z" />
+              <path d="M212.629 383.13C212.629 383.13 303.729 405.83 331.529 322.93C296.129 381.03 228.029 378.93 228.029 378.93C296.429 351.43 280.629 280.33 390.929 290.23C356.729 322.73 374.929 346.93 342.129 375.13C312.529 402.43 277.529 413.03 212.629 383.13Z" />
+              <path d="M354.929 386.031C425.529 354.631 435.929 308.331 435.429 308.831C418.929 330.831 405.929 353.331 360.429 375.731C387.229 356.031 378.529 322.831 403.229 299.931C427.229 277.731 449.029 283.731 454.329 271.331C450.629 322.131 422.229 366.631 354.929 386.031Z" />
+            </svg>
+            ПРОЧАЙ
+          </span>
+        </header>
+        <main class="page"></main>
+        <nav class="bottom-nav" aria-label="Разделы магазина">
+          <button
+            type="button"
+            class="tab"
+            data-route="catalog"
+          >
+            <span class="tab-icon">
+              <svg
+                aria-hidden="true"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="3" y="3" width="7" height="7" rx="1.6" />
+                <rect x="14" y="3" width="7" height="7" rx="1.6" />
+                <rect x="3" y="14" width="7" height="7" rx="1.6" />
+                <rect x="14" y="14" width="7" height="7" rx="1.6" />
+              </svg>
+            </span>
+            <span>Каталог</span>
+          </button>
+          <button
+            type="button"
+            class="tab"
+            data-route="favorites"
+          >
+            <span class="tab-icon">
+              <svg
+                aria-hidden="true"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M20.6 5.7a5 5 0 0 0-7.1 0L12 7.1l-1.5-1.4a5 5 0 0 0-7.1 7.1L12 21l8.6-8.2a5 5 0 0 0 0-7.1Z"
+                />
+              </svg>
+            </span>
+            <span>Избранное</span>
+          </button>
+          <button
+            type="button"
+            class="tab"
+            data-route="cart"
+          >
+            <span class="tab-icon">
+              <svg
+                aria-hidden="true"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 7h14l1 14H4L5 7Z" />
+                <path d="M9 9V6a3 3 0 0 1 6 0v3" />
+              </svg>
+            </span>
+            <span>Корзина</span>
+          </button>
+        </nav>
+        <div class="safe-area" aria-hidden="true"></div>
+      </div>
+    </div>
+  </body>
+</html>

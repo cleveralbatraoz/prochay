@@ -1,41 +1,34 @@
-# Публикация демо
+# Сборка и публикация демо
 
-На рабочем компьютере нужны Node.js 26 (от 26.13.1), npm 12, работающий Doop и SSH-доступ по имени `vpn`. Для передачи файлов установи rclone (на macOS — `brew install rclone`). [Установка rclone](https://rclone.org/install/)
-
-На VPS Caddy раздаёт файлы сайта из `/srv/prochay-demo/current`. [Конфигурация Caddy](Caddyfile)
-
-Команды выполняются из корня репозитория. Собери плеер при первом запуске и после изменений в `design/publish/player/`.
+Команды выполняются из корня репозитория. Для сборки нужны Node.js 26, npm 12 и фотографии из Git LFS.
 
 ```sh
-npm ci --prefix design/publish/player
-npm audit --prefix design/publish/player --audit-level=low
-npm run build --prefix design/publish/player
+git lfs pull
+npm ci --prefix design
+npm audit --prefix design --audit-level=low
+npm run build --prefix design
 ```
 
-После слияния изменений макета обнови локальную ветку `main` и опубликуй её холст.
+Сборка находится в `design/dist/`. Команда `npm run dev --prefix design` открывает сервер для разработки, а `npm run preview --prefix design` раздаёт локальную сборку.
+
+## Публикация
+
+На рабочем компьютере нужны [rclone](https://rclone.org/install/) и SSH-доступ к VPS по имени `vpn`. На сервере [Caddy](Caddyfile) раздаёт файлы из `/srv/prochay-demo/current/` по HTTP.
+
+Для ревью укажи номер PR. Следующая команда публикует версию PR № 10.
 
 ```sh
-node design/publish/export.ts --publish --cookie-file .local/doop-server/private/cookie-header
+node design/publish/publish.ts --review 10
 ```
 
-Экспорт готовит плеер, экраны, фотографии и архив исходников во временной папке. Затем [rclone sync](https://rclone.org/commands/rclone_sync/) перезаписывает файлы выбранного демо по SFTP и удаляет устаревшие. Во время передачи сайт может показывать неполную сборку. При обрыве повтори команду. После публикации открой каталог и карточку товара по [публичной ссылке](http://157.22.181.155/).
+Каталог этой версии открывается по адресу `http://157.22.181.155/c/review-10/proto/` без входа в аккаунт.
 
-Для ревью выполни команду из ветки макета, подставив номер PR вместо `8`. Адрес этой версии — `http://157.22.181.155/c/review-8/proto/`. Он открывает каталог без входа в Doop. У каждого PR своя папка, которую сохраняет публикация `main`.
+После слияния опубликуй актуальную ветку `main`.
 
 ```sh
-node design/publish/export.ts --publish --review 8 --cookie-file .local/doop-server/private/cookie-header
+node design/publish/publish.ts
 ```
 
-После публикации слитого PR в `main` или закрытия PR без слияния удали его папку `/srv/prochay-demo/current/c/review-<номер PR>/`.
+Публикация собирает демо во временной папке и передаёт файлы через `rclone sync` по SFTP. Устаревшие файлы в выбранной версии удаляются. При обрыве передачи повтори команду. Публикация `main` сохраняет все демо для ревью.
 
-Для локальной копии укажи путь к пустой папке вместо `--publish`.
-
-## Разовая настройка каталога на VPS
-
-Если `current` — символическая ссылка на каталог в `releases/`, после успешной синхронизации перенеси этот каталог на место ссылки.
-
-```sh
-ssh vpn 'cd /srv/prochay-demo && dir=$(readlink current) && test -d "$dir" && unlink current && mv -T -- "$dir" current'
-```
-
-Открой демо и проверь переход из каталога в карточку товара. После проверки удали `/srv/prochay-demo/releases/` и `/srv/prochay-demo/.publish.lock`.
+После публикации проверь открытие каталога и карточки товара в [публичном демо](http://157.22.181.155/). После публикации слитого PR или закрытия PR без слияния удали на VPS его папку `/srv/prochay-demo/current/c/review-<номер PR>/`.
