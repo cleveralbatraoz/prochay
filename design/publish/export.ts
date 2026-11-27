@@ -109,7 +109,7 @@ function copyPlayer(output: string, player: string) {
   copyFileSync(join(dist, 'licenses.txt'), join(source, 'third-party.txt'))
   execFileSync('tar', [
     '--no-xattrs', '-czf', join(source, 'player-source.tar.gz'), '-C', player,
-    'entry.tsx', 'index.html', 'styles.css', 'vite.config.mts', 'package.json', 'package-lock.json', '.npmrc',
+    'entry.tsx', 'index.html', 'static-view.ts', 'styles.css', 'vite.config.mts', 'package.json', 'package-lock.json', '.npmrc',
     '-C', modules, 'doop/LICENSE', 'doop/src', 'doop/shared', 'doop/tsconfig.json', 'doop/package.json',
   ], { env: { ...process.env, COPYFILE_DISABLE: '1' } })
   writeFileSync(join(source, 'index.html'), `<!doctype html><html lang="ru"><meta charset="utf-8"><title>Плеер Doop</title>
@@ -147,7 +147,9 @@ async function main() {
     } else {
       execFileSync('rclone', [
         'sync', staging, ':sftp:/srv/prochay-demo/current',
+        '--config', '',
         '--sftp-ssh', 'ssh -o BatchMode=yes -o StrictHostKeyChecking=yes vpn',
+        '--sftp-known-hosts-file', '~/.ssh/known_hosts',
         '--sftp-shell-type', 'none', '--ignore-times',
       ], { stdio: 'inherit' })
     }

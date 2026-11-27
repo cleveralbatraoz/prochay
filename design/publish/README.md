@@ -6,6 +6,7 @@
 
 ```sh
 npm ci --prefix design/publish/player
+npm audit --prefix design/publish/player --audit-level=low
 npm run build --prefix design/publish/player
 ```
 
