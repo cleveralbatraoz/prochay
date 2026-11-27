@@ -558,7 +558,7 @@ body {
 
 .tea-shell .stepper {
   display: inline-grid;
-  grid-template-columns: 44px 18px 44px;
+  grid-template-columns: 44px minmax(18px, max-content) 44px;
   align-items: center;
   margin-top: 5px;
   border-radius: 22px;
