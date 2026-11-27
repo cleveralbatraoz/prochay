@@ -33,7 +33,9 @@ export function updateSearch(page: HTMLElement, query: string) {
 function productTile(product: Product, featured: boolean) {
   const tile = catalogTemplate(featured ? 'featured' : 'tile')
   element(tile, 'button').dataset.product = product.id
-  element<HTMLImageElement>(tile, 'img').src = imageUrl(product)
+  const photo = element<HTMLImageElement>(tile, 'img')
+  if (featured) photo.src = imageUrl(product)
+  else photo.dataset.src = imageUrl(product)
   element(tile, 'strong').textContent = product.name
   element(tile, '.meta').textContent = featured ? [product.category, product.region].filter(Boolean).join(' · ') : product.category
   const price = element(tile, '.price')
@@ -64,6 +66,16 @@ export function renderCatalog(page: HTMLElement, group: string, query: string) {
   }
   page.replaceChildren(screen)
   updateSearch(page, query)
+  const photos = new IntersectionObserver(entries => {
+    for (const entry of entries) {
+      if (!entry.isIntersecting) continue
+      const photo = entry.target as HTMLImageElement
+      photo.src = photo.dataset.src!
+      photos.unobserve(photo)
+    }
+  }, { root: page, rootMargin: '32px 0px' })
+  for (const photo of page.querySelectorAll('img[data-src]')) photos.observe(photo)
+  return photos
 }
 
 function unitLabel({ size, group }: Product) {
