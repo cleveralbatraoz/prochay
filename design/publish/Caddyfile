@@ -1,6 +1,0 @@
-http:// {
-	root * /srv/prochay-demo/current
-	encode gzip
-	header X-Robots-Tag "noindex, nofollow"
-	file_server
-}

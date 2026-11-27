@@ -5,10 +5,13 @@
   "packageManager": "npm@12.2.3",
   "scripts": {
     "dev": "vite",
+    "typecheck": "tsc --noEmit",
     "build": "vite build",
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@types/node": "26.6.11",
+    "typescript": "7.0.2",
     "vite": "8.3.4"
   },
   "allowScripts": {
