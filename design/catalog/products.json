@@ -5,11 +5,11 @@
     "group": "tea",
     "category": "Шу пуэр",
     "price": 850,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "variants": [
       {
         "id": "tea-brick",
-        "unit": "500 г",
+        "size": { "amount": 500, "unit": "g" },
         "price": 4250,
         "packLabel": "Целый кирпич"
       }
@@ -28,7 +28,7 @@
     "group": "tea",
     "category": "Зелёный чай",
     "price": 1848,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "Во вкусе чувствуется терпкость, а в аромате — кедровый орех и свежая зелень.",
     "photo": "3053.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/kitayskiy-chay/zelenyy-kitayskiy-chay/3053/"
@@ -39,7 +39,7 @@
     "group": "ware",
     "category": "Гайвань",
     "price": 1500,
-    "unit": "220 мл",
+    "size": { "amount": 220, "unit": "ml" },
     "description": "Гайвань с крышкой для заваривания чая.",
     "photo": "2401.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-posudy/gayvani/2401/"
@@ -50,7 +50,7 @@
     "group": "tea",
     "category": "Белый чай",
     "price": 1700,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "Цветочный аромат с оттенками жасмина и сирени. Во вкусе — сладость и ореховые ноты.",
     "photo": "2313.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/kitayskiy-chay/belyy-kitayskiy-chay/2313/"
@@ -61,7 +61,7 @@
     "group": "accessories",
     "category": "Подставка",
     "price": 500,
-    "unit": "1 шт.",
+    "size": { "amount": 1, "unit": "piece" },
     "description": "Подставка в форме дракона для ароматических палочек.",
     "photo": "2317.jpg",
     "source": "https://www.prochay.ru/catalog/aksessuary/2317/"
@@ -72,7 +72,7 @@
     "group": "tea",
     "category": "Красный чай",
     "price": 3428,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "В настое чувствуются османтус и сухофрукты, в аромате — мёд и свежая выпечка.",
     "photo": "2919.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/kitayskiy-chay/krasnyy-kitayskiy-chay/2919/"
@@ -83,7 +83,7 @@
     "group": "ware",
     "category": "Пиала",
     "price": 3500,
-    "unit": "100 мл",
+    "size": { "amount": 100, "unit": "ml" },
     "description": "Чайная пиала объёмом 100 мл.",
     "photo": "1909.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-posudy/pialy/1909/"
@@ -94,7 +94,7 @@
     "group": "tea",
     "category": "Южнофуцзяньский улун",
     "price": 650,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "Сливочный улун с травянистыми нотами и ароматом жасмина и лайма.",
     "photo": "2392.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/kitayskiy-chay/kitayskiy-chay-ulun/yuzhnofutszyanskie-uluny/2392/"
@@ -105,7 +105,7 @@
     "group": "tea",
     "category": "Зелёный чай",
     "price": 1100,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "photo": "jasmine.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/kitayskiy-chay/zelenyy-kitayskiy-chay/2157/",
     "origin": "Китай",
@@ -118,7 +118,7 @@
     "group": "ware",
     "category": "Исинский чайник",
     "price": 4500,
-    "unit": "70 мл",
+    "size": { "amount": 70, "unit": "ml" },
     "description": "Небольшой заварочный чайник ручной работы из исинской глины.",
     "photo": "2023.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-posudy/chayniki/isinskie-chayniki/2023/"
@@ -129,7 +129,7 @@
     "group": "tea",
     "category": "Шу пуэр",
     "price": 1125,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "Шу пуэр 2013 года в разломе. Вишнёвые и древесные ноты сочетаются с ароматом изюма.",
     "photo": "2409.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/kitayskiy-chay/kitayskiy-chay-puer/shu-puer/2409/"
@@ -140,7 +140,7 @@
     "group": "accessories",
     "category": "Благовония",
     "price": 1500,
-    "unit": "200 шт.",
+    "size": { "amount": 200, "unit": "piece" },
     "description": "Ароматические палочки без основы. Длина одной палочки — 19 см.",
     "photo": "1446.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-blagovoniy/1446/"
@@ -151,7 +151,7 @@
     "group": "tea",
     "category": "Грузинский чай",
     "price": 2260,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "Грузинский зелёный чай со сливочными и травянистыми нотами. В аромате — хвоя и грецкий орех.",
     "photo": "2998.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/gruzinskiy-chay/2998/"
@@ -162,7 +162,7 @@
     "group": "ware",
     "category": "Чахай",
     "price": 828,
-    "unit": "185 мл",
+    "size": { "amount": 185, "unit": "ml" },
     "description": "В чахай переливают готовый настой, а затем разливают его по пиалам.",
     "photo": "1762.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-posudy/chakhai/1762/"
@@ -173,7 +173,7 @@
     "group": "tea",
     "category": "Травяной чай",
     "price": 1050,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "photo": "hibiscus.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/indiyskiy-chay/1516/",
     "origin": "Индия",
@@ -186,7 +186,7 @@
     "group": "tea",
     "category": "Краснодарский чай",
     "price": 900,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "Рассыпной чёрный чай из Краснодарского края. Во вкусе есть сладость и терпкость, в аромате — орех и карамель.",
     "photo": "1008.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/russkiy-chay/krasnodarskiy-chay/1008/"
@@ -197,7 +197,7 @@
     "group": "ware",
     "category": "Чабань",
     "price": 10350,
-    "unit": "1 шт.",
+    "size": { "amount": 1, "unit": "piece" },
     "description": "Деревянная чайная доска для церемонии гунфу-ча.",
     "photo": "1208.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-posudy/doski-dlya-chaepitiy/1208/"
@@ -208,7 +208,7 @@
     "group": "tea",
     "category": "Жёлтый чай",
     "price": 5500,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "Жёлтый чай с абрикосовыми и цитрусовыми нотами. Аромат напоминает ванильную выпечку.",
     "photo": "2337.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/kitayskiy-chay/zheltyy-kitayskiy-chay/2337/"
@@ -219,7 +219,7 @@
     "group": "accessories",
     "category": "Чайная фигурка",
     "price": 12000,
-    "unit": "1 набор",
+    "size": { "amount": 1, "unit": "set" },
     "description": "Две чёрные керамические фигурки для чайного стола.",
     "photo": "2059.jpg",
     "source": "https://www.prochay.ru/catalog/aksessuary/chaynye-figurki/2059/"
@@ -230,7 +230,7 @@
     "group": "tea",
     "category": "Габа-чай",
     "price": 2950,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "Ореховые и сливочные оттенки во вкусе, яблоко и лемонграсс в аромате.",
     "photo": "2387.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/kitayskiy-chay/kitayskiy-chay-gaba-cha/2387/"
@@ -241,7 +241,7 @@
     "group": "ware",
     "category": "Пиала",
     "price": 118,
-    "unit": "15 мл",
+    "size": { "amount": 15, "unit": "ml" },
     "description": "Миниатюрная пиала для небольших порций чая.",
     "photo": "2670.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-posudy/pialy/2670/"
@@ -252,7 +252,7 @@
     "group": "tea",
     "category": "Гуандунский улун",
     "price": 2100,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "Гуандунский улун с терпким цитрусовым вкусом и ароматом жареного миндаля.",
     "photo": "1037.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/kitayskiy-chay/kitayskiy-chay-ulun/guandunskiy-ulun/1037/"
@@ -263,7 +263,7 @@
     "group": "tea",
     "category": "Уишаньский улун",
     "price": 4953,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "Улун урожая 2008 года с нотами карамели, табачного листа и тёмного шоколада.",
     "photo": "2541.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/kitayskiy-chay/kitayskiy-chay-ulun/uishanskiy-ulun/2541/"
@@ -274,7 +274,7 @@
     "group": "ware",
     "category": "Походный набор",
     "price": 4900,
-    "unit": "1 набор",
+    "size": { "amount": 1, "unit": "set" },
     "description": "В дорожный набор входит гайвань с полезным объёмом 100 мл.",
     "photo": "2074.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-posudy/nabory/2074/"
@@ -285,7 +285,7 @@
     "group": "tea",
     "category": "Хэй ча",
     "price": 4050,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "Тёмный чай с древесными и землистыми нотами. В аромате — макадамия и грецкий орех.",
     "photo": "1599.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/kitayskiy-chay/kitayskiy-chay-hey-cha/1599/"
@@ -296,7 +296,7 @@
     "group": "accessories",
     "category": "Чайница",
     "price": 9720,
-    "unit": "1 шт.",
+    "size": { "amount": 1, "unit": "piece" },
     "description": "Ёмкость для хранения чая объёмом 1500 мл.",
     "photo": "2412.jpg",
     "source": "https://www.prochay.ru/catalog/aksessuary/2412/"
@@ -307,7 +307,7 @@
     "group": "tea",
     "category": "Белый чай",
     "price": 2250,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "Белый чай с пряным цитрусовым вкусом и цветочным ароматом сирени и лаванды.",
     "photo": "2312.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/kitayskiy-chay/belyy-kitayskiy-chay/2312/"
@@ -318,7 +318,7 @@
     "group": "ware",
     "category": "Чайное сито",
     "price": 644,
-    "unit": "1 шт.",
+    "size": { "amount": 1, "unit": "piece" },
     "description": "Сито задерживает чаинки, когда настой переливают из заварочной посуды.",
     "photo": "1761.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-posudy/chaynye-sita/1761/"
@@ -329,7 +329,7 @@
     "group": "tea",
     "category": "Зелёный чай",
     "price": 1260,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "Зелёный чай с овощными и цитрусовыми нотами. В аромате — имбирь и водоросли нори.",
     "photo": "3052.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/kitayskiy-chay/zelenyy-kitayskiy-chay/3052/"
@@ -340,7 +340,7 @@
     "group": "tea",
     "category": "Тайваньский улун",
     "price": 4452,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "Тайваньский улун со вкусом бисквита и сливочного масла. В аромате слышится клюква.",
     "photo": "2360.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/kitayskiy-chay/kitayskiy-chay-ulun/tayvanskiy-ulun/2360/"
@@ -351,7 +351,7 @@
     "group": "ware",
     "category": "Стеклянный чайник",
     "price": 1380,
-    "unit": "600 мл",
+    "size": { "amount": 600, "unit": "ml" },
     "description": "Стеклянный чайник с боковой ручкой. Сквозь стенки виден цвет настоя.",
     "photo": "1939.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-posudy/chayniki/steklyannye-chayniki/1939/"
@@ -362,7 +362,7 @@
     "group": "tea",
     "category": "Гуандунский улун",
     "price": 3150,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "Улун из Гуандуна с терпкостью и нотами жареных орехов. Аромат напоминает карамель и тёмный хлеб.",
     "photo": "1216.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/kitayskiy-chay/kitayskiy-chay-ulun/guandunskiy-ulun/1216/"
@@ -373,7 +373,7 @@
     "group": "accessories",
     "category": "Чайная фигурка",
     "price": 3600,
-    "unit": "1 шт.",
+    "size": { "amount": 1, "unit": "piece" },
     "description": "Чайная фигурка в форме раковины аммонита.",
     "photo": "2211.jpg",
     "source": "https://www.prochay.ru/catalog/aksessuary/2211/"
@@ -384,7 +384,7 @@
     "group": "tea",
     "category": "Дегустационный набор",
     "price": 2280,
-    "unit": "1 набор",
+    "size": { "amount": 1, "unit": "set" },
     "description": "Дегустационный набор для знакомства с зелёным чаем из Китая.",
     "photo": "1125.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/nachalo-chaynogo-puti/1125/"
@@ -395,7 +395,7 @@
     "group": "ware",
     "category": "Чайный набор",
     "price": 9900,
-    "unit": "1 набор",
+    "size": { "amount": 1, "unit": "set" },
     "description": "Керамический чайник на 100 мл и две пиалы.",
     "photo": "2022.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-posudy/nabory/2022/"
@@ -406,7 +406,7 @@
     "group": "tea",
     "category": "Красный чай",
     "price": 3150,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "Вкус с хлебными и ореховыми оттенками. В аромате сочетаются шоколад, мёд и гвоздика.",
     "photo": "2393.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/kitayskiy-chay/krasnyy-kitayskiy-chay/2393/"
@@ -417,7 +417,7 @@
     "group": "tea",
     "category": "Шу пуэр",
     "price": 2100,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "Шу пуэр урожая 2022 года с нотами ржаного солода. В аромате угадываются печёное яблоко и сухое дерево.",
     "photo": "2410.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/proizvodstvo-prochay/2410/"
@@ -428,7 +428,7 @@
     "group": "ware",
     "category": "Стеклянная колба",
     "price": 650,
-    "unit": "200 мл",
+    "size": { "amount": 200, "unit": "ml" },
     "description": "Стеклянная колба для заваривания чая.",
     "photo": "1003.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-posudy/tipoty/1003/"
@@ -439,7 +439,7 @@
     "group": "tea",
     "category": "Жёлтый чай",
     "price": 6900,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "В чае сочетаются травянистые и фруктовые ноты. Аромат напоминает персик и спелый абрикос.",
     "photo": "2338.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/kitayskiy-chay/zheltyy-kitayskiy-chay/2338/"
@@ -450,7 +450,7 @@
     "group": "accessories",
     "category": "Чайная фигурка",
     "price": 500,
-    "unit": "1 шт.",
+    "size": { "amount": 1, "unit": "piece" },
     "description": "Миниатюрная фигурка в форме чайника для чайного стола.",
     "photo": "2418.jpg",
     "source": "https://www.prochay.ru/catalog/aksessuary/2418/"
@@ -461,7 +461,7 @@
     "group": "tea",
     "category": "Грузинский чай",
     "price": 1740,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "Крупнолистовой зелёный чай из Грузии. Вкус напоминает ореховое печенье и апельсиновую цедру.",
     "photo": "3000.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/gruzinskiy-chay/3000/"
@@ -472,7 +472,7 @@
     "group": "ware",
     "category": "Бомбилья",
     "price": 400,
-    "unit": "1 шт.",
+    "size": { "amount": 1, "unit": "piece" },
     "description": "Трубочка для питья мате. Длина — 20 см.",
     "photo": "2072.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-posudy/posuda-dlya-mate/2072/"
@@ -483,7 +483,7 @@
     "group": "tea",
     "category": "Юньнанский улун",
     "price": 2100,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "Юньнаньский улун с ягодными и сливочными нотами. Аромат напоминает карамель и грецкий орех.",
     "photo": "1718.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/kitayskiy-chay/kitayskiy-chay-ulun/yunnanskie-uluny/1718/"
@@ -494,7 +494,7 @@
     "group": "tea",
     "category": "Тайваньский улун",
     "price": 3450,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "Улун с Тайваня с травянистым вкусом и нотами табачного листа. В аромате — роза и бисквит.",
     "photo": "2359.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/kitayskiy-chay/kitayskiy-chay-ulun/tayvanskiy-ulun/2359/"
@@ -505,7 +505,7 @@
     "group": "tea",
     "category": "Белый чай",
     "price": 924,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "Прессованный белый чай в разломе. Во вкусе — абрикосовая косточка и ореховая шелуха.",
     "photo": "2192.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/kitayskiy-chay/belyy-kitayskiy-chay/2192/"
@@ -516,7 +516,7 @@
     "group": "tea",
     "category": "Краснодарский чай",
     "price": 1200,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "Краснодарский рассыпной чай с нотами сухофруктов. В аромате — мёд и мускатный орех.",
     "photo": "1167.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/russkiy-chay/krasnodarskiy-chay/1167/"
@@ -527,7 +527,7 @@
     "group": "tea",
     "category": "Уишаньский улун",
     "price": 6397,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "Уишаньский улун 2007 года. В настое чувствуются дымные и пряные ноты, какао и изюм.",
     "photo": "2551.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/kitayskiy-chay/kitayskiy-chay-ulun/uishanskiy-ulun/2551/"
@@ -538,7 +538,7 @@
     "group": "tea",
     "category": "Красный чай",
     "price": 2480,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "Красный чай с ягодными и цветочными оттенками. В настое чувствуются корица и османтус.",
     "photo": "2388.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/kitayskiy-chay/krasnyy-kitayskiy-chay/2388/"
@@ -549,7 +549,7 @@
     "group": "tea",
     "category": "Уишаньский улун",
     "price": 7561,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "Уишаньский улун урожая 2008 года. Вкус напоминает вишню, бисквит и тёмный шоколад.",
     "photo": "2543.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/kitayskiy-chay/kitayskiy-chay-ulun/uishanskiy-ulun/2543/"
@@ -560,7 +560,7 @@
     "group": "tea",
     "category": "Хэй ча",
     "price": 3050,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "Тёмный чай со сладостью и древесной терпкостью. Аромат напоминает грецкий орех и сандал.",
     "photo": "1601.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/kitayskiy-chay/kitayskiy-chay-hey-cha/1601/"
@@ -571,7 +571,7 @@
     "group": "tea",
     "category": "Гуандунский улун",
     "price": 2850,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "Гуандунский улун с ореховыми и хлебными нотами. В аромате — мёд, полынь и хвойная смола.",
     "photo": "1217.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/kitayskiy-chay/kitayskiy-chay-ulun/guandunskiy-ulun/1217/"
@@ -582,7 +582,7 @@
     "group": "tea",
     "category": "Южнофуцзяньский улун",
     "price": 2558,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "Терпкий улун с оттенками жареных орехов и сухофруктов. В аромате — тёмный хлеб и мускатный орех.",
     "photo": "2916.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/kitayskiy-chay/kitayskiy-chay-ulun/yuzhnofutszyanskie-uluny/2916/"
@@ -593,7 +593,7 @@
     "group": "tea",
     "category": "Краснодарский чай",
     "price": 900,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "Рассыпной красный чай из Краснодарского края с цитрусовыми нотами и ароматом карамели.",
     "photo": "1009.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/russkiy-chay/krasnodarskiy-chay/1009/"
@@ -604,7 +604,7 @@
     "group": "tea",
     "category": "Жёлтый чай",
     "price": 2850,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "Жёлтый чай с выраженным умами. В настое ощущаются морская соль и овощной бульон.",
     "photo": "2345.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/kitayskiy-chay/zheltyy-kitayskiy-chay/2345/"
@@ -615,7 +615,7 @@
     "group": "tea",
     "category": "Тайваньский улун",
     "price": 4209,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "Тайваньский улун с травянистыми и хлебными нотами, ароматом ванили и сливочного масла.",
     "photo": "2363.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/kitayskiy-chay/kitayskiy-chay-ulun/tayvanskiy-ulun/2363/"
@@ -626,7 +626,7 @@
     "group": "tea",
     "category": "Габа-чай",
     "price": 2880,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "Во вкусе сочетаются жареные орехи и сухофрукты. В аромате — шоколад, карамель и мускатный орех.",
     "photo": "2552.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/proizvodstvo-prochay/2552/"
@@ -637,7 +637,7 @@
     "group": "tea",
     "category": "Габа-чай",
     "price": 2675,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "Габа-чай с фруктовыми и пряными нотами. В аромате — жасмин, имбирь и лемонграсс.",
     "photo": "2553.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/proizvodstvo-prochay/2553/"
@@ -648,7 +648,7 @@
     "group": "tea",
     "category": "Габа-чай",
     "price": 3247,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "Ореховые и сливочные ноты во вкусе дополняет аромат яблока, винограда и сирени.",
     "photo": "2920.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/kitayskiy-chay/kitayskiy-chay-gaba-cha/2920/"
@@ -659,7 +659,7 @@
     "group": "tea",
     "category": "Габа-чай",
     "price": 4778,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "Габа-чай с Тайваня с хлебными нотами и вкусом сухофруктов. В аромате — карамель и мёд.",
     "photo": "2917.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/kitayskiy-chay/kitayskiy-chay-gaba-cha/2917/"
@@ -670,7 +670,7 @@
     "group": "tea",
     "category": "Шен пуэр",
     "price": 16285,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "Шен пуэр 2005 года в разломе. Вкус с древесными и землистыми нотами, оттенками изюма и камфоры.",
     "photo": "2894.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/kitayskiy-chay/kitayskiy-chay-puer/shen-puer/2894/"
@@ -681,7 +681,7 @@
     "group": "tea",
     "category": "Белый чай",
     "price": 1100,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "Белый чай из Юньнани со сливочной сладостью и цветочными нотами.",
     "photo": "875.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/kitayskiy-chay/belyy-kitayskiy-chay/875/"
@@ -692,7 +692,7 @@
     "group": "tea",
     "category": "Красный чай",
     "price": 790,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "Терпкий красный чай с древесными и землистыми оттенками. Во вкусе есть сухофрукты.",
     "photo": "849.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/kitayskiy-chay/krasnyy-kitayskiy-chay/849/"
@@ -703,7 +703,7 @@
     "group": "tea",
     "category": "Грузинский чай",
     "price": 1190,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "Зелёный чай из Грузии. Вкус сочетает ореховые, пряные и сливочные оттенки.",
     "photo": "1010.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/gruzinskiy-chay/1010/"
@@ -714,7 +714,7 @@
     "group": "tea",
     "category": "Тайваньский улун",
     "price": 1700,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "Тайваньский улун с пряными цитрусовыми нотами и сладостью сухофруктов.",
     "photo": "870.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/kitayskiy-chay/kitayskiy-chay-ulun/tayvanskiy-ulun/870/"
@@ -725,7 +725,7 @@
     "group": "tea",
     "category": "Габа-чай",
     "price": 2700,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "Во вкусе этого габа-чая есть ноты цитрусовых, орехов и хлеба.",
     "photo": "845.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/kitayskiy-chay/kitayskiy-chay-gaba-cha/845/"
@@ -736,7 +736,7 @@
     "group": "tea",
     "category": "Южнофуцзяньский улун",
     "price": 2550,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "Южнофуцзяньский улун с травянистыми нотами, сладостью сухофруктов и пряным оттенком.",
     "photo": "889.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/kitayskiy-chay/kitayskiy-chay-ulun/yuzhnofutszyanskie-uluny/889/"
@@ -747,7 +747,7 @@
     "group": "tea",
     "category": "Хэй ча",
     "price": 20000,
-    "unit": "1 кг",
+    "size": { "amount": 1, "unit": "kg" },
     "description": "Тёмный чай 1992 года в целом кирпиче. Во вкусе заметны ореховые и древесные оттенки.",
     "photo": "1402.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/kitayskiy-chay/kitayskiy-chay-hey-cha/1402/"
@@ -758,7 +758,7 @@
     "group": "tea",
     "category": "Красный чай",
     "price": 1900,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "Рассыпной красный чай с цветочными и фруктовыми нотами и терпкостью.",
     "photo": "842.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/kitayskiy-chay/krasnyy-kitayskiy-chay/842/"
@@ -769,7 +769,7 @@
     "group": "tea",
     "category": "Грузинский чай",
     "price": 960,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "Грузинский зелёный чай со вкусом сухофруктов, ореховыми и травянистыми оттенками.",
     "photo": "1012.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/gruzinskiy-chay/1012/"
@@ -780,7 +780,7 @@
     "group": "tea",
     "category": "Красный чай",
     "price": 1200,
-    "unit": "100 г",
+    "size": { "amount": 100, "unit": "g" },
     "description": "Красный чай со сливочными и хлебными нотами и цитрусовой терпкостью.",
     "photo": "848.jpg",
     "source": "https://www.prochay.ru/catalog/katalog-chaya/kitayskiy-chay/krasnyy-kitayskiy-chay/848/"

@@ -1,6 +1,7 @@
 import catalog from './products.json'
+import { readPackSize, type PackSize } from './pack-size'
 
-export type Variant = { id: string; unit: string; price: number; packLabel?: string }
+export type Variant = { id: string; size: PackSize; price: number; packLabel?: string }
 
 export type Product = Variant & {
   name: string
@@ -15,7 +16,14 @@ export type Product = Variant & {
   variants?: Variant[]
 }
 
-export const products: Product[] = catalog
+export const products: Product[] = catalog.map(product => ({
+  ...product,
+  size: readPackSize(product.size, product.id),
+  variants: product.variants?.map(variant => ({
+    ...variant,
+    size: readPackSize(variant.size, variant.id),
+  })),
+}))
 const byId = new Map(products.map(product => [product.id, product]))
 const skus = new Map<string, { product: Product; variant: Variant }>()
 const photos = import.meta.glob<string>('../assets/catalog/*.jpg', { import: 'default', query: '?url', eager: true })
@@ -23,10 +31,6 @@ const priceFormat = new Intl.NumberFormat('ru-RU', { useGrouping: true })
 
 export function variantsOf(product: Product): Variant[] {
   return [product, ...(product.variants ?? [])]
-}
-
-export function isMeasuredUnit(unit: string): boolean {
-  return /\s(?:г|кг|мл|л)$/.test(unit)
 }
 
 for (const product of products) {

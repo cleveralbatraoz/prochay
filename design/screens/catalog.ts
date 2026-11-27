@@ -1,4 +1,5 @@
-import { getProduct, imageUrl, isMeasuredUnit, products, rubles, variantsOf, type Product, type Variant } from '../catalog/products'
+import { formatPackSize, unitKind } from '../catalog/pack-size'
+import { getProduct, imageUrl, products, rubles, variantsOf, type Product, type Variant } from '../catalog/products'
 import catalogMarkup from './catalog.html?raw'
 import productMarkup from './product.html?raw'
 import { element, templates } from './template'
@@ -36,13 +37,14 @@ function productTile(product: Product, featured: boolean) {
   element(tile, 'strong').textContent = product.name
   element(tile, '.meta').textContent = featured ? [product.category, product.region].filter(Boolean).join(' · ') : product.category
   const price = element(tile, '.price')
+  const kind = unitKind(product.size.unit)
   if (featured) {
     price.textContent = 'от ' + rubles(product.price)
-  } else if (!isMeasuredUnit(product.unit)) {
+  } else if (kind === 'count') {
     price.textContent = rubles(product.price)
   } else {
     price.prepend(rubles(product.price) + ' ')
-    element(price, 'small').textContent = (product.group === 'tea' ? '/ ' : '· ') + product.unit
+    element(price, 'small').textContent = (kind === 'weight' ? '/ ' : '· ') + formatPackSize(product.size)
   }
   return tile
 }
@@ -65,10 +67,10 @@ export function renderCatalog(page: HTMLElement, group: string, query: string) {
   updateSearch(page, query)
 }
 
-function unitLabel({ unit, group }: Product) {
-  if (unit.endsWith('мл') || unit.endsWith(' л')) return 'Объём'
+function unitLabel({ size, group }: Product) {
+  if (unitKind(size.unit) === 'volume') return 'Объём'
   if (group === 'tea') return 'Фасовка'
-  if (unit.endsWith('шт.') && unit !== '1 шт.') return 'В упаковке'
+  if (size.unit === 'piece' && size.amount > 1) return 'В упаковке'
   return 'Количество'
 }
 
@@ -77,24 +79,25 @@ function packaging(product: Product, selected: Variant) {
   if (!product.packLabel && variants.length === 1) {
     const row = productTemplate('unit')
     element(row, 'span').textContent = unitLabel(product)
-    element(row, 'strong').textContent = selected.unit
+    element(row, 'strong').textContent = formatPackSize(selected.size)
     return row
   }
   const packs = productTemplate('packs')
   const options = element(packs, '.pack-options')
   for (const choice of variants) {
     const isSelected = choice.id === selected.id
+    const sizeLabel = formatPackSize(choice.size)
     const option = document.createElement(isSelected ? 'div' : 'button')
     option.className = 'pack'
     if (isSelected) {
       option.dataset.selected = 'true'
-      option.setAttribute('aria-label', [choice.unit, choice.packLabel, 'выбрано'].filter(Boolean).join(', '))
+      option.setAttribute('aria-label', [sizeLabel, choice.packLabel, 'выбрано'].filter(Boolean).join(', '))
     } else {
       option.setAttribute('type', 'button')
       option.dataset.variant = choice.id
     }
     const label = productTemplate('pack-label')
-    element(label, 'strong').textContent = choice.unit
+    element(label, 'strong').textContent = sizeLabel
     element(label, 'small').textContent = choice.packLabel ?? ''
     const price = element(label, '.price')
     if (variants.length > 1) price.textContent = rubles(choice.price)
