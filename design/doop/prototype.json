@@ -162,7 +162,7 @@
     }
   ],
   "generated": {
-    "renderer": "catalog/render.py",
+    "renderer": "catalog/render.ts",
     "data": "catalog/products.json",
     "frames": {
       "catalog-tea": "Gsr15Ti-JN",
