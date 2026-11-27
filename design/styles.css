@@ -412,6 +412,20 @@ body {
   padding: 15px 0;
 }
 
+@container (max-width: 360px) {
+  .tea-shell .cart-row {
+    grid-template-columns: 66px minmax(0, 1fr);
+  }
+
+  .tea-shell .cart-row > img {
+    grid-row: span 2;
+  }
+
+  .tea-shell .cart-row > .price {
+    grid-column: 2;
+  }
+}
+
 .tea-shell .saved-row > img,
 .tea-shell .cart-row > img {
   display: block;
