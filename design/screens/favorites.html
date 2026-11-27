@@ -1,0 +1,47 @@
+<template id="favorites">
+  <div class="heading"><h1>Избранное</h1><p class="sub"></p></div>
+</template>
+
+<template id="favorite">
+  <div class="saved-feature">
+    <button type="button" class="hero-link"><img class="saved-photo" alt=""></button>
+    <button type="button" class="save-button">
+      <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20.6 5.7a5 5 0 0 0-7.1 0L12 7.1l-1.5-1.4a5 5 0 0 0-7.1 7.1L12 21l8.6-8.2a5 5 0 0 0 0-7.1Z"/>
+      </svg>
+    </button>
+  </div>
+  <div class="saved-caption">
+    <span class="meta"></span>
+    <h2 class="saved-title"></h2>
+    <p class="row-meta"></p>
+    <span class="price"></span>
+  </div>
+  <div class="end-actions">
+    <button type="button" class="buy">
+      <span class="action-label"></span>
+      <span aria-hidden="true">→</span>
+    </button>
+  </div>
+</template>
+
+<template id="empty-favorites">
+  <div class="heading"><h1>Избранное</h1></div>
+  <div class="empty">
+    <span class="empty-icon">
+      <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20.6 5.7a5 5 0 0 0-7.1 0L12 7.1l-1.5-1.4a5 5 0 0 0-7.1 7.1L12 21l8.6-8.2a5 5 0 0 0 0-7.1Z"/>
+      </svg>
+    </span>
+    <h2>Пока нет избранного</h2>
+    <p>Нажмите сердце в карточке товара.</p>
+  </div>
+  <div class="end-actions">
+    <button type="button" class="buy" data-route="catalog">
+      В каталог
+      <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m9 5 7 7-7 7"/>
+      </svg>
+    </button>
+  </div>
+</template>

@@ -1,6 +1,6 @@
 .DS_Store
 node_modules/
-/design/publish/player/dist/
+dist/
 .local/
 .env
 .env.*
@@ -17,9 +17,6 @@ cookies*.txt
 credentials.json
 storageState*.json
 storage-state*.json
-
-**/.doop/*
-!**/.doop/config.json
 
 .auth/
 **/playwright/.cache/
