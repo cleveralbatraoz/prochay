@@ -38,12 +38,11 @@ function productTile(product: Product, featured: boolean) {
   element(tile, '.meta').textContent = featured ? [product.category, product.region].filter(Boolean).join(' · ') : product.category
   const price = element(tile, '.price')
   const kind = unitKind(product.size.unit)
-  if (featured) {
-    price.textContent = 'от ' + rubles(product.price)
-  } else if (kind === 'count') {
-    price.textContent = rubles(product.price)
+  const amount = (featured ? 'от ' : '') + rubles(product.price)
+  if (kind === 'count') {
+    price.textContent = amount
   } else {
-    price.prepend(rubles(product.price) + ' ')
+    price.prepend(amount + ' ')
     element(price, 'small').textContent = (kind === 'weight' ? '/ ' : '· ') + formatPackSize(product.size)
   }
   return tile
@@ -87,13 +86,16 @@ function packaging(product: Product, selected: Variant) {
   for (const choice of variants) {
     const isSelected = choice.id === selected.id
     const sizeLabel = formatPackSize(choice.size)
-    const option = document.createElement(isSelected ? 'div' : 'button')
+    const option = document.createElement(variants.length > 1 ? 'button' : 'div')
+    if (option instanceof HTMLButtonElement) {
+      option.type = 'button'
+      option.setAttribute('aria-pressed', String(isSelected))
+      if (isSelected) option.tabIndex = -1
+    }
     option.className = 'pack'
     if (isSelected) {
       option.dataset.selected = 'true'
-      option.setAttribute('aria-label', [sizeLabel, choice.packLabel, 'выбрано'].filter(Boolean).join(', '))
     } else {
-      option.setAttribute('type', 'button')
       option.dataset.variant = choice.id
     }
     const label = productTemplate('pack-label')

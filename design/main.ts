@@ -12,7 +12,7 @@ const groups = new Map([
 const shell = document.querySelector<HTMLElement>('.tea-shell')!
 const topbar = shell.querySelector<HTMLElement>('.topbar')!
 const brand = topbar.querySelector<HTMLElement>('.brand')!
-const page = shell.querySelector<HTMLElement>('.page')!
+let page = shell.querySelector<HTMLElement>('.page')!
 const tabs = shell.querySelectorAll<HTMLButtonElement>('.bottom-nav button')
 const session = createSession()
 
@@ -103,6 +103,13 @@ function display() {
   if (view.anchor) restoreCatalogAnchor(view.anchor)
 }
 
+function displayNewPage() {
+  const nextPage = page.cloneNode(false) as HTMLElement
+  page.replaceWith(nextPage)
+  page = nextPage
+  display()
+}
+
 function navigate(target: View, replace = false) {
   remember()
   if (!replace) index++
@@ -112,7 +119,7 @@ function navigate(target: View, replace = false) {
   url.searchParams.set('frame', view.key)
   if (replace) history.replaceState({ shopIndex: index }, '', url)
   else history.pushState({ shopIndex: index }, '', url)
-  display()
+  displayNewPage()
 }
 
 function search(text: string) {
@@ -122,13 +129,28 @@ function search(text: string) {
   page.scrollTop = 0
 }
 
-page.addEventListener('input', event => {
+shell.addEventListener('input', event => {
   if (event.target instanceof HTMLInputElement && event.target.type === 'search') search(event.target.value)
 })
+
+let displacedPointer: { button: HTMLButtonElement; x: number; y: number; time: number; type: string } | undefined
+
+function rememberDisplacedPointer(event: PointerEvent) {
+  if (event.detail === 0) return
+  const { clientX: x, clientY: y, timeStamp: time, pointerType: type } = event
+  queueMicrotask(() => {
+    const button = document.elementFromPoint(x, y)?.closest('button')
+    if (button) displacedPointer = { button, x, y, time, type }
+  })
+}
 
 shell.addEventListener('click', event => {
   const button = event.target instanceof Element ? event.target.closest('button') : null
   if (!button) return
+  if (displacedPointer?.button === button && event.detail > 0 && event.pointerType === displacedPointer.type &&
+      event.timeStamp - displacedPointer.time < 500 &&
+      Math.hypot(event.clientX - displacedPointer.x, event.clientY - displacedPointer.y) <= 10) return
+  displacedPointer = undefined
   const { route, product, variant, removeFavorite, addSku, quantityChange } = button.dataset
 
   if (route) {
@@ -160,7 +182,11 @@ shell.addEventListener('click', event => {
     view.product = product
     return navigate(freshView(product))
   }
-  if (variant) return navigate(freshView(variant), true)
+  if (variant) {
+    navigate(freshView(variant), true)
+    page.querySelector<HTMLButtonElement>('.pack[aria-pressed="true"]')?.focus()
+    return
+  }
   if (button.matches('.catalog-search-clear')) {
     search('')
     page.querySelector<HTMLInputElement>('input[type="search"]')?.focus()
@@ -169,6 +195,7 @@ shell.addEventListener('click', event => {
 
   const sku = getSku(view.key)
   if (sku && button.hasAttribute('data-buy')) {
+    rememberDisplacedPointer(event)
     session.changeQuantity(sku.variant.id, 1)
     return navigate(freshView('cart'))
   }
@@ -176,32 +203,38 @@ shell.addEventListener('click', event => {
     session.toggleFavorite(sku.product.id)
     if (session.favorites.has(sku.product.id)) return navigate(freshView('favorites'))
   } else if (removeFavorite) {
+    rememberDisplacedPointer(event)
     session.toggleFavorite(removeFavorite)
   } else if (addSku) {
     session.changeQuantity(addSku, 1)
   } else if (quantityChange) {
     const id = button.closest<HTMLElement>('[data-sku]')!.dataset.sku!
     session.changeQuantity(id, Number(quantityChange))
+    if (!session.quantities.has(id)) rememberDisplacedPointer(event)
   } else {
     return
   }
 
-  const rowId = button.closest<HTMLElement>('[data-sku]')?.dataset.sku
+  const controlSelector = quantityChange ? `[data-quantity-change="${quantityChange}"]` : '[data-remove-favorite]'
+  const controlIndex = Array.from(page.querySelectorAll(controlSelector)).indexOf(button)
   remember()
   display()
-  if (rowId && quantityChange) {
-    page.querySelector<HTMLElement>(`[data-sku="${CSS.escape(rowId)}"] [data-quantity-change="${quantityChange}"]`)?.focus({ preventScroll: true })
+  if (controlIndex !== -1) {
+    const controls = page.querySelectorAll<HTMLButtonElement>(controlSelector)
+    const next = controls[Math.min(controlIndex, controls.length - 1)] ?? page.querySelector<HTMLButtonElement>('.end-actions button')
+    next?.focus({ preventScroll: true })
   }
 })
 
 window.addEventListener('popstate', event => {
+  displacedPointer = undefined
   remember()
   index = Number.isInteger(event.state?.shopIndex) ? event.state.shopIndex : 0
   const target = viewFromUrl()
   const saved = views.get(index)
   view = saved?.key === target.key ? saved : target
   views.set(index, view)
-  display()
+  displayNewPage()
 })
 
 display()

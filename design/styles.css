@@ -19,12 +19,17 @@ html, body {
   margin: 0;
 }
 
+html {
+  box-sizing: border-box;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  background: #17171b;
+}
+
 body {
   display: grid;
   grid-template: minmax(0, 1fr) / minmax(0, 1fr);
   place-items: center;
   overflow: clip;
-  background: #17171b;
 }
 
 .tea-shell {
@@ -550,7 +555,7 @@ body {
 }
 
 .tea-shell .safe-area {
-  height: max(5px, env(safe-area-inset-bottom, 0px));
+  height: 5px;
   flex: 0 0 auto;
   background: var(--color-paper);
 }
@@ -564,7 +569,7 @@ body {
   max-width: 88%;
 }
 
-.tea-shell .tea-card .price small {
+.tea-shell .catalog-card .price small {
   color: var(--color-muted);
   font-size: 11px;
   font-weight: 450;
@@ -589,7 +594,7 @@ body {
 
 .tea-shell .stepper {
   display: inline-grid;
-  grid-template-columns: 44px 18px 44px;
+  grid-template-columns: 44px minmax(18px, max-content) 44px;
   align-items: center;
   margin-top: 5px;
   border-radius: 22px;
