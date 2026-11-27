@@ -103,19 +103,20 @@ function copyPlayer(output: string, player: string) {
 
   const source = join(output, 'source')
   mkdirSync(source)
-  copyFileSync(join(player, 'upstream/LICENSE'), join(source, 'LICENSE.txt'))
+  const modules = join(player, 'node_modules')
+  copyFileSync(join(modules, 'doop/LICENSE'), join(source, 'LICENSE.txt'))
   copyFileSync(join(dist, 'licenses.txt'), join(source, 'third-party.txt'))
   execFileSync('tar', [
-    '--no-xattrs', '-czhf', join(source, 'player-source.tar.gz'), '-C', player,
-    'entry.tsx', 'index.html', 'vite.config.mts', 'build.sh', 'upstream/LICENSE',
-    'upstream/src', 'upstream/shared', 'upstream/tsconfig.json', 'upstream/package.json', 'upstream/bun.lock',
+    '--no-xattrs', '-czf', join(source, 'player-source.tar.gz'), '-C', player,
+    'entry.tsx', 'index.html', 'styles.css', 'vite.config.mts', 'package.json', 'bun.lock',
+    '-C', modules, 'doop/LICENSE', 'doop/src', 'doop/shared', 'doop/tsconfig.json', 'doop/package.json', 'doop/bun.lock',
   ], { env: { ...process.env, COPYFILE_DISABLE: '1' } })
   writeFileSync(join(source, 'index.html'), `<!doctype html><html lang="ru"><meta charset="utf-8"><title>Плеер Doop</title>
 <h1>Плеер Doop</h1><p><a href="LICENSE.txt">GNU AGPL 3.0</a></p>
 <p><a href="third-party.txt">Лицензии зависимостей</a></p>
-<p><a href="https://github.com/doop-design/doop/tree/1c72db0d48961e15fb77595cf3f746c711bda20f">Doop</a></p>
+<p><a href="https://github.com/doop-design/doop">Doop</a></p>
 <p><a href="player-source.tar.gz">Исходный код плеера и сборки</a></p>
-<p>Для сборки выполните <code>bash build.sh</code> с установленными Bun и Node.js в распакованном каталоге.</p></html>`)
+<p>В распакованном каталоге выполните <code>bun install --frozen-lockfile &amp;&amp; bun run build</code>.</p></html>`)
 }
 
 async function main() {
@@ -123,9 +124,9 @@ async function main() {
     allowPositionals: true,
     options: { player: { type: 'string' }, 'cookie-file': { type: 'string' }, help: { type: 'boolean', short: 'h' } },
   })
-  const usage = 'Usage: node export.ts OUTPUT --player DIRECTORY [--cookie-file FILE]'
+  const usage = 'Usage: node export.ts OUTPUT [--player DIRECTORY] [--cookie-file FILE]'
   if (values.help) return console.log(usage)
-  if (positionals.length !== 1 || !values.player) throw new Error(usage)
+  if (positionals.length !== 1) throw new Error(usage)
   const cookie = values['cookie-file'] ? readFileSync(values['cookie-file'], 'utf8').trim() : process.env.DOOP_COOKIE
   if (!cookie) throw new Error('Provide --cookie-file or DOOP_COOKIE')
 
@@ -135,7 +136,7 @@ async function main() {
   const staging = mkdtempSync(join(dirname(output), '.prochay-export-'))
   try {
     const { screens, images } = await exportCanvas(staging, cookie)
-    copyPlayer(staging, resolve(values.player))
+    copyPlayer(staging, values.player ? resolve(values.player) : join(import.meta.dirname, 'player'))
     renameSync(staging, output)
     console.log(`${screens} screens, ${images} images`)
   } finally {

@@ -2,22 +2,20 @@
 
 Демо показывает принятый в `main` холст Doop. После слияния дизайн-PR обнови локальную ветку `main`. Команды выполняются из корня проекта при работающем Doop.
 
-Для первой сборки плеера нужны Git, Node.js и Bun. Сборка проверена с Node.js 26.13.1 и Bun 1.3.10. На рабочем Mac для Bun можно выполнить `export PATH="$PWD/.local/doop-server/bin:$PATH"`. Повтори сборку при изменении файлов в `design/publish/player/`.
+Для сборки плеера нужны Node.js и Bun. На рабочем Mac Bun доступен через `export PATH="$PWD/.local/doop-server/bin:$PATH"`. Собери плеер при первой публикации и при изменениях в `design/publish/player/`.
 
 ```sh
-mkdir -p .local/http-demo/player
-cp design/publish/player/* .local/http-demo/player/
-bash .local/http-demo/player/build.sh
+(cd design/publish/player && bun install --frozen-lockfile && bun run build)
 ```
 
-Скрипт получает закреплённую ревизию Doop и устанавливает зависимости по её `bun.lock`. Для публикации очередного состояния каталога используй готовый плеер.
+Bun получает исходники Doop из GitHub по ревизии в [package.json](player/package.json). Версии зависимостей зафиксированы в [bun.lock](player/bun.lock). Для публикации изменений каталога используй готовую сборку.
 
 ```sh
 (
   set -e
   release_dir=$(mktemp -d)
   trap 'rm -rf "$release_dir"' EXIT
-  node design/publish/export.ts "$release_dir" --player .local/http-demo/player --cookie-file .local/doop-server/private/cookie-header
+  node design/publish/export.ts "$release_dir" --cookie-file .local/doop-server/private/cookie-header
   bash scripts/publish-demo.sh "$release_dir"
 )
 ```

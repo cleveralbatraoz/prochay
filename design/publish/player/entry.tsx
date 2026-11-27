@@ -1,8 +1,8 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
-import { PrototypePlayer } from './upstream/src/components/PrototypePlayer.tsx'
-import { useStore } from './upstream/src/lib/store.ts'
-import './upstream/src/styles.css'
+import { PrototypePlayer } from 'doop/src/components/PrototypePlayer.tsx'
+import { useStore } from 'doop/src/lib/store.ts'
+import './styles.css'
 
 const container = document.getElementById('root')
 if (!container) throw new Error('Не удалось открыть плеер.')
