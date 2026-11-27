@@ -41,7 +41,7 @@
   height: 25px;
   align-items: center;
   gap: 5px;
-  color: var(--color-green);
+  color: var(--color-ink);
   font: 400 18px/1 var(--font-serif);
   letter-spacing: .07em;
   white-space: nowrap;
@@ -112,7 +112,7 @@
 
 .tea-shell a:focus-visible,
 .tea-shell button:focus-visible {
-  outline: 2px solid var(--color-green);
+  outline: 2px solid var(--color-ink);
   outline-offset: 2px;
 }
 
@@ -154,7 +154,7 @@
   overflow: hidden;
   place-items: center;
   border-radius: 8px;
-  background: linear-gradient(120deg, var(--color-clay), var(--color-clay-shadow));
+  background: linear-gradient(120deg, var(--color-amber), var(--color-amber-shadow));
 }
 
 .tea-shell .hero-pack {
@@ -173,7 +173,7 @@
   top: 12px;
   left: 13px;
   padding: 0;
-  color: var(--color-ivory);
+  color: var(--color-ink);
 }
 
 .tea-shell .round-arrow {
@@ -186,7 +186,7 @@
   place-items: center;
   border-radius: 50%;
   background: var(--color-paper);
-  color: var(--color-green);
+  color: var(--color-clay);
   font-size: 21px;
 }
 
@@ -217,6 +217,7 @@
 }
 
 .tea-shell .hero-caption .price {
+  color: var(--color-clay);
   grid-column: 2;
   justify-self: end;
 }
@@ -258,7 +259,7 @@
 .tea-shell .detail-photo {
   overflow: hidden;
   border-radius: 7px;
-  background: var(--color-linen);
+  background: var(--color-paper);
 }
 
 .tea-shell .card-photo {
@@ -320,15 +321,15 @@
   justify-content: center;
   gap: 3px;
   padding: 10px 12px;
-  border: 1px solid var(--color-control-line);
+  border: 1px solid var(--color-olive);
   border-radius: 10px;
   background: var(--color-paper);
   text-align: left;
 }
 
 .tea-shell .pack[data-selected="true"] {
-  border-color: var(--color-green);
-  background: var(--color-celadon);
+  border-color: var(--color-clay);
+  background: var(--color-honey);
 }
 
 .tea-shell .pack strong {
@@ -355,7 +356,7 @@
   gap: 12px;
   border-radius: 12px;
   padding: 12px 16px;
-  background: var(--color-green);
+  background: var(--color-ink);
   color: var(--color-ivory);
   font: 650 16px/1.3 var(--font-sans);
 }
@@ -428,7 +429,7 @@
   align-items: center;
   align-self: flex-start;
   gap: 6px;
-  color: var(--color-green);
+  color: var(--color-ink);
   font-size: 15px;
   font-weight: 550;
 }
@@ -477,12 +478,12 @@
 }
 
 .tea-shell .tab[aria-current="page"] {
-  color: var(--color-green);
+  color: var(--color-ink);
   font-weight: 700;
 }
 
 .tea-shell .tab[aria-current="page"] .tab-icon {
-  background: var(--color-celadon);
+  background: var(--color-honey);
 }
 
 .tea-shell .safe-area {
@@ -515,7 +516,7 @@
 
 .tea-shell .leaf-motion {
   display: grid;
-  color: var(--color-green);
+  color: var(--color-olive);
   place-items: center;
   animation: prochay-unfurl 180ms ease-out;
 }
@@ -552,7 +553,7 @@
   align-items: center;
   margin-top: 5px;
   border-radius: 22px;
-  background: var(--color-linen);
+  background: var(--color-honey);
   font: 600 14px/1 var(--font-sans);
   text-align: center;
 }
@@ -581,7 +582,7 @@
   margin-bottom: 14px;
   place-items: center;
   border-radius: 50%;
-  background: var(--color-celadon);
+  background: var(--color-honey);
 }
 
 .tea-shell .empty h2 {
@@ -653,7 +654,7 @@
   right: 9px;
   width: 8px;
   height: 8px;
-  border: 2px solid var(--color-green);
+  border: 2px solid var(--color-clay);
   border-radius: 50%;
   content: "";
 }
