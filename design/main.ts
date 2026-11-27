@@ -58,9 +58,10 @@ function restoreCatalogAnchor(anchor: CatalogAnchor) {
   const rect = card.getBoundingClientRect()
   const top = page.querySelector<HTMLElement>('.catalog-tabs')!.getBoundingClientRect().bottom
   const bottom = page.getBoundingClientRect().bottom
-  const center = rect.top + rect.height / 2
-  if (center < top || center > bottom) {
-    page.scrollTop += rect.top - top - Math.max(0, (bottom - top - rect.height) / 2)
+  const height = bottom - top
+  const target = rect.height > height ? card.querySelector('.product-name, .hero-name')!.getBoundingClientRect() : rect
+  if (target.top < top || target.bottom > bottom) {
+    page.scrollTop += target.top - top - Math.max(0, (height - target.height) / 2)
   }
 }
 
