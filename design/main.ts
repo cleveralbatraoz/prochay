@@ -11,7 +11,7 @@ const groups = new Map([
 const shell = document.querySelector<HTMLElement>('.tea-shell')!
 const topbar = shell.querySelector<HTMLElement>('.topbar')!
 const brand = topbar.querySelector<HTMLElement>('.brand')!
-const page = shell.querySelector<HTMLElement>('.page')!
+let page = shell.querySelector<HTMLElement>('.page')!
 const tabs = shell.querySelectorAll<HTMLButtonElement>('.bottom-nav button')
 const session = createSession()
 
@@ -68,6 +68,13 @@ function display() {
   page.scrollTop = view.top
 }
 
+function displayNewPage() {
+  const nextPage = page.cloneNode(false) as HTMLElement
+  page.replaceWith(nextPage)
+  page = nextPage
+  display()
+}
+
 function navigate(target: View, replace = false) {
   remember()
   if (!replace) index++
@@ -77,7 +84,7 @@ function navigate(target: View, replace = false) {
   url.searchParams.set('frame', view.key)
   if (replace) history.replaceState({ shopIndex: index }, '', url)
   else history.pushState({ shopIndex: index }, '', url)
-  display()
+  displayNewPage()
 }
 
 function search(text: string) {
@@ -87,7 +94,7 @@ function search(text: string) {
   page.scrollTop = 0
 }
 
-page.addEventListener('input', event => {
+shell.addEventListener('input', event => {
   if (event.target instanceof HTMLInputElement && event.target.type === 'search') search(event.target.value)
 })
 
@@ -161,7 +168,7 @@ window.addEventListener('popstate', event => {
   const saved = views.get(index)
   view = saved?.key === target.key ? saved : target
   views.set(index, view)
-  display()
+  displayNewPage()
 })
 
 function fitDemo() {
