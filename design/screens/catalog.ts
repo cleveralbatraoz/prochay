@@ -38,12 +38,11 @@ function productTile(product: Product, featured: boolean) {
   element(tile, '.meta').textContent = featured ? [product.category, product.region].filter(Boolean).join(' · ') : product.category
   const price = element(tile, '.price')
   const kind = unitKind(product.size.unit)
-  if (featured) {
-    price.textContent = 'от ' + rubles(product.price)
-  } else if (kind === 'count') {
-    price.textContent = rubles(product.price)
+  const amount = (featured ? 'от ' : '') + rubles(product.price)
+  if (kind === 'count') {
+    price.textContent = amount
   } else {
-    price.prepend(rubles(product.price) + ' ')
+    price.prepend(amount + ' ')
     element(price, 'small').textContent = (kind === 'weight' ? '/ ' : '· ') + formatPackSize(product.size)
   }
   return tile
