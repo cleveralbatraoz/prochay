@@ -659,11 +659,16 @@
   content: "";
 }
 
+.tea-shell .page:has(> .catalog-tabs) {
+  padding-top: 0;
+}
+
 .tea-shell .catalog-heading {
   display: flex;
   align-items: baseline;
   gap: 12px;
   margin-bottom: 4px;
+  padding-top: 4px;
 }
 
 .tea-shell .catalog-count {
