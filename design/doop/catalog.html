@@ -3,100 +3,19 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Каталог чая · ПРОЧАЙ</title>
-    <style>
-      html,
-      body {
-        height: 100%;
-        margin: 0;
-      }
-    </style>
+    <title>$title · ПРОЧАЙ</title>
+    <style>html, body { height: 100%; margin: 0; }</style>
   </head>
   <body>
     <doop-use component="TeaShell" catalog="page" favorites="false" cart="false">
       <template slot="content">
-        <div class="heading"><h1>Каталог чая</h1></div>
-        <button
-          type="button"
-          class="hero-link"
-          data-doop-on="click"
-          data-doop-action="navigate:7oQIjNpLcM"
-          data-doop-transition="slide-left"
-          data-doop-duration="160"
-        >
-          <span class="hero-photo">
-            <img
-              class="hero-pack"
-              src="https://www.prochay.ru/upload/iblock/b5a/r59sa0cvhwu5p3qbf1m81ahn0e4cwc0n/shu-puer-zelyenye-kholmy-yunnani-500gr-2024-prochay-ru.jpg"
-              alt=""
-            />
-            <span class="hero-type">Коллекция ПРОЧАЙ</span>
-            <span class="round-arrow">
-              <svg
-                aria-hidden="true"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.7"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M6 18 18 6M7 6h11v11" />
-              </svg>
-            </span>
-          </span>
-          <span class="hero-caption">
-            <strong class="hero-name">Зелёные холмы Юньнани</strong>
-            <span class="meta">Шу пуэр · Юньнань</span>
-            <span class="price">от 850 ₽</span>
-          </span>
-        </button>
-        <div class="section-head"><h2>Ещё в каталоге</h2></div>
-        <div class="grid">
-          <button
-            type="button"
-            class="tea-card"
-            data-doop-on="click"
-            data-doop-action="navigate:SQ8P4EQM4V"
-            data-doop-transition="slide-left"
-            data-doop-duration="160"
-          >
-            <span class="card-photo">
-              <img
-                src="https://www.prochay.ru/upload/iblock/ada/q6nxxptq4h7dq226e6zesouv6u0guvdm/IMG_2766.jpg"
-                alt=""
-              />
-            </span>
-            <span class="meta">Зелёный чай</span>
-            <strong class="product-name">Моли Хуа Люй Ча</strong>
-            <span class="price">
-              1 100 ₽
-              <small>/ 100 г</small>
-            </span>
-          </button>
-          <button
-            type="button"
-            class="tea-card"
-            data-doop-on="click"
-            data-doop-action="navigate:MaJRE52Vmf"
-            data-doop-transition="slide-left"
-            data-doop-duration="160"
-          >
-            <span class="card-photo">
-              <img
-                src="https://www.prochay.ru/upload/iblock/693/0qow8wiga0a0tt9njoekoo6m4q6gexbv/%D0%B3%D0%B8%D0%B1%D0%B8%D1%81%D0%BA%D1%83%D1%816.jpg"
-                alt=""
-              />
-            </span>
-            <span class="meta">Травяной чай</span>
-            <strong class="product-name">Каркаде</strong>
-            <span class="price">
-              1 050 ₽
-              <small>/ 100 г</small>
-            </span>
-          </button>
+        <div class="heading catalog-heading"><h1>$title</h1><span class="catalog-count">$count</span></div>
+        <nav class="catalog-tabs" aria-label="Разделы каталога">
+          $tabs
+        </nav>
+        $featured
+        <div class="grid catalog-grid">
+          $tiles
         </div>
       </template>
     </doop-use>

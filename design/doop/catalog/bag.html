@@ -1,0 +1,9 @@
+<doop-use component="CartReview" photo="$photo" product="$name" variant="$category · $unit" amount="$total" total="$total">
+  <template slot="quantity">
+    <div class="stepper">
+      <button type="button" class="step" aria-label="Уменьшить количество" data-doop-on="click" data-doop-action="navigate:$decrease" data-doop-transition="instant">−</button>
+      <span>$quantity</span>
+      $increase
+    </div>
+  </template>
+</doop-use>

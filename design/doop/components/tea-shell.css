@@ -658,3 +658,90 @@
   border-radius: 50%;
   content: "";
 }
+
+.tea-shell .page:has(> .catalog-tabs) {
+  padding-top: 0;
+}
+
+.tea-shell .catalog-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 4px;
+  padding-top: 4px;
+}
+
+.tea-shell .catalog-count {
+  color: var(--color-muted);
+  font: 500 14px/1.2 var(--font-sans);
+  white-space: nowrap;
+}
+
+.tea-shell .catalog-tabs {
+  position: sticky;
+  z-index: 2;
+  top: 0;
+  display: flex;
+  align-items: stretch;
+  gap: clamp(2px, 1.2vw, 8px);
+  margin: 0 0 14px;
+  border-bottom: 1px solid var(--color-line);
+  background: var(--color-paper);
+}
+
+.tea-shell .catalog-tabs button {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 clamp(4px, 1.4vw, 9px);
+  border-bottom: 2px solid transparent;
+  color: var(--color-muted);
+  font: 550 14px/1.2 var(--font-sans);
+  text-align: center;
+}
+
+.tea-shell .catalog-tabs button[aria-current="true"] {
+  border-color: var(--color-clay);
+  color: var(--color-ink);
+}
+
+.tea-shell .catalog-feature {
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--color-line);
+  padding-bottom: 16px;
+}
+
+.tea-shell .catalog-grid .card-photo {
+  width: 100%;
+  background: white;
+}
+
+.tea-shell .catalog-grid .card-photo img,
+.tea-shell .object-photo img,
+.tea-shell .object-saved-photo {
+  background: white;
+  object-fit: contain;
+}
+
+.tea-shell .detail-photo.object-photo {
+  aspect-ratio: 1.64;
+}
+
+.tea-shell .object-title {
+  overflow-wrap: anywhere;
+  text-wrap: pretty;
+}
+
+.tea-shell .object-unit {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 4px;
+  padding-block: 12px;
+  border-block: 1px solid var(--color-line);
+  font-size: 15px;
+}
+
+.tea-shell .object-unit span {
+  color: var(--color-muted);
+}

@@ -1,0 +1,18 @@
+<div class="detail-bar">
+  <button type="button" class="back" data-doop-on="click" data-doop-action="back" data-doop-transition="slide-right" data-doop-duration="160">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m14.5 5-7 7 7 7"/></svg> Назад
+  </button>
+  <button type="button" class="save-button" aria-label="Добавить в избранное" data-doop-on="click" data-doop-action="navigate:saved-$id" data-doop-transition="dissolve" data-doop-duration="160">
+    $heart
+  </button>
+</div>
+<div class="detail-photo object-photo"><img src="$photo" alt="$name" /></div>
+<div class="detail-meta"><span class="meta">$category</span></div>
+<h1 class="object-title">$name</h1>
+<p class="taste">$description</p>
+<div class="object-unit"><span>$unit_label</span><strong>$unit</strong></div>
+<div class="end-actions">
+  <button type="button" class="buy" data-doop-on="click" data-doop-action="navigate:bag-$id" data-doop-transition="slide-left" data-doop-duration="160">
+    <span>В корзину</span><span class="price">$amount</span>
+  </button>
+</div>
