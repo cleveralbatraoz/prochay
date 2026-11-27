@@ -87,13 +87,17 @@ function packaging(product: Product, selected: Variant) {
   for (const choice of variants) {
     const isSelected = choice.id === selected.id
     const sizeLabel = formatPackSize(choice.size)
-    const option = document.createElement(isSelected ? 'div' : 'button')
+    const option = document.createElement(variants.length > 1 ? 'button' : 'div')
+    if (option instanceof HTMLButtonElement) {
+      option.type = 'button'
+      option.setAttribute('aria-pressed', String(isSelected))
+    }
     option.className = 'pack'
     if (isSelected) {
+      option.tabIndex = -1
       option.dataset.selected = 'true'
       option.setAttribute('aria-label', [sizeLabel, choice.packLabel, 'выбрано'].filter(Boolean).join(', '))
     } else {
-      option.setAttribute('type', 'button')
       option.dataset.variant = choice.id
     }
     const label = productTemplate('pack-label')
