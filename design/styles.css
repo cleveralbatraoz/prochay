@@ -162,6 +162,14 @@ body {
   margin-top: 8px;
 }
 
+.tea-shell .catalog-card {
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid var(--color-line);
+  border-radius: 10px;
+  background: var(--color-ivory);
+}
+
 .tea-shell .hero-link {
   display: block;
   width: 100%;
@@ -187,6 +195,10 @@ body {
   height: auto;
   clip-path: polygon(1.8% 24.5%, 98.2% 22.4%, 97.8% 73.6%, 2.2% 74%);
   transform: translate(-50%, -50%) rotate(-5deg);
+}
+
+.tea-shell .catalog-card .hero-photo {
+  border-radius: 0;
 }
 
 .tea-shell .hero-type {
@@ -222,12 +234,12 @@ body {
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: baseline;
   gap: 6px 10px;
-  padding: 13px 0 0;
+  padding: 12px 14px 14px;
 }
 
 .tea-shell .hero-caption .hero-name {
   grid-column: 1 / -1;
-  font: 400 29px/1.07 var(--font-serif);
+  font: 400 27px/1.07 var(--font-serif);
   letter-spacing: -.04em;
 }
 
@@ -258,7 +270,7 @@ body {
 .tea-shell .grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px 12px;
+  gap: 12px;
 }
 
 .tea-shell .tea-card {
@@ -266,18 +278,11 @@ body {
   min-width: 0;
   flex-direction: column;
   align-items: stretch;
-  gap: 5px;
+  gap: 4px;
+  padding: 8px 11px 12px;
   text-align: left;
 }
 
-.tea-shell .tea-card > a {
-  display: flex;
-  min-height: 44px;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.tea-shell .card-photo,
 .tea-shell .detail-photo {
   overflow: hidden;
   border-radius: 7px;
@@ -285,8 +290,13 @@ body {
 }
 
 .tea-shell .card-photo {
-  aspect-ratio: 1.30;
-  margin-bottom: 3px;
+  aspect-ratio: 1.25;
+  margin-bottom: 5px;
+}
+
+.tea-shell .card-photo img {
+  object-fit: contain;
+  mix-blend-mode: multiply;
 }
 
 .tea-shell .card-photo img,
@@ -294,11 +304,14 @@ body {
   display: block;
   width: 100%;
   height: 100%;
+}
+
+.tea-shell .detail-photo img {
   object-fit: cover;
 }
 
 .tea-shell .tea-card .meta {
-  font-size: 9px;
+  font-size: 10px;
 }
 
 .tea-shell .tea-card .product-name {
@@ -309,7 +322,7 @@ body {
 
 .tea-shell .tea-card .price {
   margin-top: auto;
-  padding-top: 3px;
+  padding-top: 5px;
 }
 
 .tea-shell .detail-photo {
@@ -645,11 +658,6 @@ body {
   border-radius: 8px;
 }
 
-.tea-shell .tea-card:last-child .card-photo img {
-  object-fit: contain;
-  background: white;
-}
-
 .tea-shell .pack[data-selected="true"]::after {
   position: absolute;
   top: 9px;
@@ -756,17 +764,9 @@ body {
 }
 
 .tea-shell .catalog-feature {
-  margin-bottom: 20px;
-  border-bottom: 1px solid var(--color-line);
-  padding-bottom: 16px;
+  margin-bottom: 12px;
 }
 
-.tea-shell .catalog-grid .card-photo {
-  width: 100%;
-  background: white;
-}
-
-.tea-shell .catalog-grid .card-photo img,
 .tea-shell .object-photo img,
 .tea-shell .object-saved-photo {
   background: white;
