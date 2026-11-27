@@ -74,7 +74,7 @@ function categoryTabs(active: string) {
   return Object.entries(groups).map(([group, label]) => {
     const attributes = group === active
       ? 'aria-current="true"'
-      : `data-doop-on="click" data-doop-action="navigate:${categoryFrame(group)}" data-doop-transition="instant"`
+      : `data-doop-on="click" data-doop-action="navigate:${categoryFrame(group)}"`
     return `<button type="button" ${attributes}>${label}</button>`
   }).join('\n')
 }
@@ -131,7 +131,7 @@ function render(output: string) {
     for (const quantity of [1, 2]) {
       const decrease = quantity === 1 ? 'cart-empty' : 'bag-' + id
       const increase = quantity === 1
-        ? `<button type="button" class="step" aria-label="Увеличить количество" data-doop-on="click" data-doop-action="navigate:pair-${id}" data-doop-transition="instant">+</button>`
+        ? `<button type="button" class="step" aria-label="Увеличить количество" data-doop-on="click" data-doop-action="navigate:pair-${id}">+</button>`
         : '<button type="button" class="step limit" aria-label="Максимум две единицы" disabled>+</button>'
       const bag = substitute(templates.bag, { ...fields, quantity, total: rubles(product.price * quantity), decrease, increase })
       screen((quantity === 1 ? 'bag-' : 'pair-') + id, `Корзина · ${name} × ${quantity}`, bag, 'cart')
