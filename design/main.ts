@@ -142,7 +142,11 @@ shell.addEventListener('click', event => {
     view.product = product
     return navigate(freshView(product))
   }
-  if (variant) return navigate(freshView(variant), true)
+  if (variant) {
+    navigate(freshView(variant), true)
+    page.querySelector<HTMLButtonElement>('.pack[aria-pressed="true"]')?.focus()
+    return
+  }
   if (button.matches('.catalog-search-clear')) {
     search('')
     page.querySelector<HTMLInputElement>('input[type="search"]')?.focus()
