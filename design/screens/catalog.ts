@@ -38,6 +38,8 @@ function productTile(product: Product, featured: boolean) {
   const price = element(tile, '.price')
   if (featured) {
     price.textContent = 'от ' + rubles(product.price)
+  } else if (product.unit === '1 шт.') {
+    price.textContent = rubles(product.price)
   } else {
     price.prepend(rubles(product.price) + ' ')
     element(price, 'small').textContent = (product.group === 'tea' ? '/ ' : '· ') + product.unit

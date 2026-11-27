@@ -71,10 +71,13 @@ function favoriteCard(product: Product) {
   element(card, '.meta').textContent = [product.category, product.region ?? product.origin].filter(Boolean).join(' · ')
   const packs = variantsOf(product)
   const units = packs.map(pack => pack.unit)
-  if (units.length > 1 && units.every(unit => unit.endsWith(' г'))) {
-    element(card, '.row-meta').textContent = listFormat.format(units.map(unit => unit.slice(0, -2))) + ' г'
+  const unitLabel = element(card, '.row-meta')
+  if (units.length === 1 && product.unit === '1 шт.') {
+    unitLabel.remove()
+  } else if (units.length > 1 && units.every(unit => unit.endsWith(' г'))) {
+    unitLabel.textContent = listFormat.format(units.map(unit => unit.slice(0, -2))) + ' г'
   } else {
-    element(card, '.row-meta').textContent = listFormat.format(units)
+    unitLabel.textContent = listFormat.format(units)
   }
   const minimum = Math.min(...packs.map(pack => pack.price))
   element(card, '.price').textContent = (packs.length > 1 ? 'от ' : '') + rubles(minimum)
